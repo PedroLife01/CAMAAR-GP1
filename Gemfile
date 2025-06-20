@@ -18,7 +18,6 @@ gem "stimulus-rails"
 gem "jbuilder"
 #gem to role management
 gem 'rolify'
-
 #gem de email
 gem 'mailer'
 # Use Redis adapter to run Action Cable in production
