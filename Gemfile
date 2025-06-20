@@ -18,8 +18,6 @@ gem "stimulus-rails"
 gem "jbuilder"
 #gem to role management
 gem 'rolify'
-#gem de email
-gem 'mailer'
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 
@@ -56,8 +54,9 @@ end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
-  gem "capybara"
-  gem "cucamber-rails", require: false
+  gem 'cucumber-rails', require: false
   gem 'database_cleaner-active_record'
-  gem "selenium-webdriver"
+  gem 'capybara'
+  gem 'selenium-webdriver' # caso vá testar com navegador
+  gem 'factory_bot_rails'
 end

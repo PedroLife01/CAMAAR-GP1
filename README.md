@@ -1,6 +1,44 @@
 # CAMAAR
 Sistema para avaliação de atividades acadêmicas remotas do CIC
 
+## 🚀 Tecnologias Utilizadas
+
+- Ruby on Rails
+- PostgreSQL
+- Cucumber (BDD)
+- FactoryBot (fábricas de teste)
+- Capybara (testes de interface)
+- Selenium WebDriver (opcional)
+- Devise (autenticação)
+- Rolify (gestão de papéis - roles)
+
+---
+
+## 📦 Requisitos
+
+- Ruby >= 3.0
+- Rails >= 7
+- PostgreSQL
+- NodeJS + Yarn
+- Bundler (`gem install bundler`)
+
+---
+
+## 🛠️ Como rodar o projeto localmente
+
+```bash
+# Instale as gems
+bundle install
+
+# Instale pacotes JS (se usar webpack ou similar)
+yarn install
+
+# Configure o banco de dados
+rails db:create db:migrate db:seed
+
+# Rode o servidor
+rails server
+
 ## Integrantes
 
 Lucas Fernandes da Silveira Campos - 180022563
