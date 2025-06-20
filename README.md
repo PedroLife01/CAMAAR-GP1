@@ -39,6 +39,8 @@ rails db:create db:migrate db:seed
 # Rode o servidor
 rails server
 
+```
+
 ## Integrantes
 
 Lucas Fernandes da Silveira Campos - 180022563
