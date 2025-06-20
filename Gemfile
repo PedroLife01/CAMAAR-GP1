@@ -16,6 +16,8 @@ gem "turbo-rails"
 gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
+#gem to role management
+gem 'rolify'
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 
@@ -52,6 +54,9 @@ end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
-  gem "capybara"
-  gem "selenium-webdriver"
+  gem 'cucumber-rails', require: false
+  gem 'database_cleaner-active_record'
+  gem 'capybara'
+  gem 'selenium-webdriver' # caso vá testar com navegador
+  gem 'factory_bot_rails'
 end
