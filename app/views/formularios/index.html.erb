@@ -5,8 +5,12 @@
 <% end %>
 
 <% if @formularios.empty? %>
-  <div class="alert alert-info">Você não tem nenhum formulário para <%= current_user.ocupacao == "docente" ? "gerenciar" : "responder" %>.</div>
+  <div class="alert alert-info">
+    Você não tem nenhum formulário para <%= current_user.ocupacao == "docente" ? "gerenciar" : "responder" %>.
+  </div>
 <% else %>
+  <% agora = Time.zone.now %>
+
   <div class="overflow-x-auto">
     <table class="table table-zebra w-full">
       <thead>
@@ -20,31 +24,28 @@
       </thead>
       <tbody>
         <% @formularios.each do |form| %>
+          <% aberto = form.data_abertura <= agora && form.data_fechamento >= agora %>
           <tr>
             <td><%= form.titulo %></td>
             <td><%= form.turma&.name %></td>
             <td><%= form.template&.nome %></td>
             <td>
-              <%= l(form.data_abertura, format: :short) %> —
-              <%= l(form.data_fechamento, format: :short) %>
+              <%= l(form.data_abertura.in_time_zone, format: :short) %> —
+              <%= l(form.data_fechamento.in_time_zone, format: :short) %>
             </td>
-              <td class="flex gap-2">
-                <% agora = Time.zone.now %>
-                <% aberto = form.data_abertura <= agora && form.data_fechamento >= agora %>
-
-                <% if current_user.ocupacao == "docente" %>
-                  <%= link_to "Ver", formulario_path(form), class: "btn btn-sm btn-info" %>
+            <td class="flex flex-col gap-2">
+              <% if current_user.ocupacao == "docente" %>
+                <%= link_to "Ver", formulario_path(form), class: "btn btn-sm btn-info" %>
+              <% else %>
+                <% if aberto %>
+                  <%= link_to "Responder", formulario_path(form), class: "btn btn-sm btn-success" %>
                 <% else %>
-                  <% if aberto %>
-                    <%= link_to "Responder", formulario_path(form), class: "btn btn-sm btn-success" %>
-                  <% else %>
-                    <button class="btn btn-sm btn-disabled" disabled>
-                      <%= form.data_abertura > agora ? "Aguardando abertura" : "Encerrado" %>
-                    </button>
-                  <% end %>
+                  <button class="btn btn-sm btn-disabled" disabled>
+                    <%= form.data_abertura > agora ? "Aguardando abertura" : "Encerrado" %>
+                  </button>
                 <% end %>
-              </td>
-
+              <% end %>
+            </td>
           </tr>
         <% end %>
       </tbody>
