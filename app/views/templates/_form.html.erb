@@ -1,0 +1,26 @@
+<%= form_with model: template, local: true, class: "space-y-6" do |f| %>
+  <div>
+    <%= f.label :nome, "Nome do Template", class: "block font-semibold mb-1" %>
+    <%= f.text_field :nome, class: "input input-bordered w-full" %>
+  </div>
+
+  <div data-controller="formbuilder">
+    <div class="flex justify-between items-center mb-2">
+      <label class="block font-semibold">Perguntas do Formulário</label>
+      <button type="button" class="btn btn-sm btn-accent" data-action="click->formbuilder#addQuestion">
+        + Adicionar pergunta
+      </button>
+    </div>
+
+    <!-- Somente o target Stimulus; perguntas virão via JS -->
+    <div data-formbuilder-target="questions" class="space-y-2"></div>
+
+    <!-- Campo oculto que guarda o JSON final -->
+    <%= f.hidden_field :formulario, data: { formbuilder_target: "formulario" } %>
+  </div>
+
+  <div class="flex gap-2">
+    <%= f.submit "Salvar", class: "btn btn-primary" %>
+    <%= link_to "Cancelar", templates_path, class: "btn btn-ghost" %>
+  </div>
+<% end %>

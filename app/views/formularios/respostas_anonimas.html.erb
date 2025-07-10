@@ -1,0 +1,22 @@
+<h1 class="text-2xl font-bold mb-6">📊 Respostas (Anônimas) – <%= @formulario.titulo %></h1>
+
+<% if @respostas.any? %>
+  <div class="mb-4">
+    <%= link_to "⬇️ Exportar para CSV", exportar_respostas_anonimas_formulario_path(@formulario, format: :csv), 
+            class: "btn btn-outline btn-sm", data: { turbo: false } %>
+  </div>
+  <% @formulario.template.formulario["perguntas"].each_with_index do |pergunta, i| %>
+    <div class="mb-6">
+      <h2 class="text-lg font-semibold mb-2"><%= "#{i + 1}. #{pergunta['texto']}" %></h2>
+      <ul class="list-disc ml-6 space-y-1">
+        <% @respostas.select { |r| r.pergunta_index == i }.each do |resposta| %>
+          <li><%= resposta.conteudo %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+<% else %>
+  <div class="alert alert-info">Nenhuma resposta enviada ainda.</div>
+<% end %>
+
+<%= link_to "⬅️ Voltar", turma_path(@formulario.turma), class: "btn btn-outline mt-6" %>

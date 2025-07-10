@@ -1,0 +1,45 @@
+<div class="p-6 max-w-3xl mx-auto">
+  <div class="mb-4">
+    <%= link_to "Voltar", templates_path, class: "btn btn-outline" %>
+  </div>
+  <h1 class="text-3xl font-bold mb-6"><%= @template.nome %></h1>
+
+  <% perguntas = @template.formulario["perguntas"] || [] %>
+
+  <% if perguntas.any? %>
+    <div class="space-y-6">
+      <% perguntas.each_with_index do |pergunta, i| %>
+        <div class="border p-4 rounded-lg shadow">
+          <p class="font-semibold mb-2">
+            <%= "#{i + 1}. #{pergunta['texto']}" %>
+          </p>
+
+          <% case pergunta["tipo"] %>
+          <% when "nota" %>
+            <div class="flex gap-2">
+              <% (1..5).each do |n| %>
+                <label class="cursor-pointer">
+                  <input type="radio" name="pergunta_<%= i %>" class="radio border-white m-1" disabled>
+                  <span class="ml-1"><%= n %></span>
+                </label>
+              <% end %>
+            </div>
+          <% when "texto" %>
+            <textarea class="textarea textarea-bordered w-full" rows="3" placeholder="Resposta..." disabled></textarea>
+          <% when "unica" %>
+            <% (pergunta["opcoes"] || []).each do |opcao| %>
+              <label class="block cursor-pointer">
+                <input type="radio" class="radio border-white m-1" name="pergunta_<%= i %>" disabled>
+                <span class="ml-2"><%= opcao %></span>
+              </label>
+            <% end %>
+          <% else %>
+            <p class="text-sm text-gray-500 italic">Tipo de pergunta desconhecido.</p>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="alert alert-warning">Este template ainda não possui perguntas.</div>
+  <% end %>
+</div>

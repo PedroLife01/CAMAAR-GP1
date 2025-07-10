@@ -1,23 +1,64 @@
+<!-- app/views/layouts/application.html.erb -->
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "Camaar" %></title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>CAMAAR</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= yield :head %>
-
-    <link rel="manifest" href="/manifest.json">
-    <link rel="icon" href="/icon.png" type="image/png">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/icon.png">
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
   </head>
+  <% if user_signed_in? %>
+  <body class="flex">
+    <!-- Sidebar -->
+    <aside class="w-64 min-h-screen bg-base-200 p-4">
+      <h2 class="text-xl font-bold mb-4">Painel CAMAAR</h2>
 
-  <body>
-    <%= yield %>
+      <% if user_signed_in? %>
+        <ul class="menu">
+          <% case current_user.ocupacao %>
+          <% when "admin" %>
+            <li><%= link_to "Administração", rails_admin_path %></li>
+          <% when "docente" %>
+            <li><%= link_to "Minhas Turmas", turmas_path %></li>
+            <li><%= link_to "Formulários", formularios_path %></li>
+            <li><%= link_to "Templates", templates_path %></li>
+            <li><%= link_to "Importar do SIGAA", sigaa_importar_path %></li>
+          <% when "dicente" %>
+            <li><%= link_to "Minhas Turmas", turmas_path %></li>
+            <li><%= link_to "Formulários", formularios_path %></li>
+          <% end %>
+            <li>
+              <div class="w-full">
+                <%= button_to "Sair", destroy_user_session_path, method: :delete,
+                    class: "btn btn-error",
+                    data: { turbo_confirm: "Tem certeza que deseja sair?" } %>
+              </div>
+            </li>
+        </ul>
+      <% else %>
+        <%= link_to "Entrar", new_user_session_path, class: "btn btn-primary w-full mt-4" %>
+      <% end %>
+    </aside>
+
+    <!-- Main content -->
+    <main class="flex-1 p-6">
+      <% if notice %>
+        <div class="alert alert-success mb-4"><%= notice %></div>
+      <% end %>
+      <% if alert %>
+        <div class="alert alert-error mb-4"><%= alert %></div>
+      <% end %>
+
+      <%= yield %>
+    </main>
+
+    <div id="toast-container" class="toast toast-top toast-end z-50 fixed right-4 top-4 space-y-2"></div>
   </body>
+<% end %>
+  <% unless user_signed_in? %>
+    <body class="bg-base-100">
+      <%= yield %>
+    </body>
+  <% end %>
 </html>

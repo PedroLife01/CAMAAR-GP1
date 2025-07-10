@@ -1,0 +1,45 @@
+<div class="p-6">
+  <div class="flex justify-between items-center mb-6">
+    <h1 class="text-3xl font-bold">Templates de Formulário</h1>
+    <%= link_to "Novo Template", new_template_path, class: "btn btn-primary" %>
+  </div>
+
+  <% if @templates&.any? %>
+    <div class="overflow-x-auto shadow rounded">
+      <table class="table w-full table-zebra">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Autor</th>
+            <th>Data de Criação</th>
+            <th class="text-right">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @templates.each do |template| %>
+            <tr>
+              <td class="font-medium"><%= template.nome %></td>
+              <td><%= template.user&.nome || "Desconhecido" %></td>
+              <td><%= l(template.created_at, format: :short) %></td>
+              <td class="text-right space-x-2">
+                <%= link_to "Visualizar", template_path(template), class: "btn btn-sm btn-outline" %>
+
+                <% if template.formularios.empty? %>
+                  <%= link_to "Editar", edit_template_path(template), class: "btn btn-sm btn-accent" %>
+                  <%= button_to "Excluir", template_path(template), method: :delete, data: { confirm: "Tem certeza?" }, class: "btn btn-sm btn-error" %>
+                <% else %>
+                  <span class="tooltip" data-tip="Template em uso">
+                    <button class="btn btn-sm btn-disabled">Editar</button>
+                    <button class="btn btn-sm btn-disabled">Excluir</button>
+                  </span>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% else %>
+    <div class="alert alert-info">Nenhum template cadastrado ainda.</div>
+  <% end %>
+</div>

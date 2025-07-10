@@ -1,0 +1,127 @@
+<h1 class="text-2xl font-bold mb-6"><%= @formulario.titulo %></h1>
+
+<div class="mb-4 space-y-2">
+  <p><strong>Descrição:</strong> <%= @formulario.descricao %></p>
+  <p><strong>Turma:</strong> <%= @formulario.turma&.name %></p>
+  <p><strong>Template:</strong> <%= @formulario.template&.nome %></p>
+  <p><strong>Período:</strong>
+    <%= l(@formulario.data_abertura, format: :short) %> até
+    <%= l(@formulario.data_fechamento, format: :short) %>
+  </p>
+  <p><strong>Criado por:</strong> <%= @formulario.docente&.nome %></p>
+</div>
+
+<% if current_user.ocupacao == "docente" %>
+  <%= form_with url: enviar_formulario_path(@formulario), method: :post, data: { turbo_confirm: "Tem certeza que deseja enviar para todos os alunos da turma?" } do %>
+    <%= submit_tag "📨 Enviar para alunos da turma", class: "btn btn-primary mb-4" %>
+  <% end %>
+<% elsif current_user.ocupacao == "dicente" %>
+  <% resposta_existente = Resposta.find_by(aluno_id: current_user.id, formulario_id: @formulario.id) %>
+
+  <% if resposta_existente %>
+    <div class="alert alert-success mb-4">
+      ✅ Você já respondeu este formulário.
+    </div>
+  <% else %>
+    <h2 class="text-xl font-semibold mt-6 mb-2">📝 Responder Formulário</h2>
+
+    <%= form_with url: respostas_path, method: :post, local: true, id: "resposta-formulario" do |f| %>
+      <% @formulario.template.formulario["perguntas"].each_with_index do |pergunta, i| %>
+        <div class="mb-6 p-4 border rounded-lg shadow-sm">
+          <p class="font-semibold mb-2"><%= "#{i + 1}. #{pergunta['texto']}" %></p>
+
+          <% case pergunta["tipo"] %>
+          <% when "nota" %>
+            <div class="flex gap-4">
+              <% (1..5).each do |n| %>
+                <label class="cursor-pointer">
+                  <input type="radio"
+                        name="respostas[<%= i %>][conteudo]"
+                        value="<%= n %>"
+                        class="radio border-white m-1" />
+                  <span class="ml-1"><%= n %></span>
+                </label>
+              <% end %>
+            </div>
+
+          <% when "unica" %>
+            <% (pergunta["opcoes"] || []).each do |opcao| %>
+              <label class="block cursor-pointer">
+                <input type="radio"
+                      name="respostas[<%= i %>][conteudo]"
+                      value="<%= opcao %>"
+                      class="radio border-white m-1" />
+                <span class="ml-2"><%= opcao %></span>
+              </label>
+            <% end %>
+
+          <% when "texto" %>
+            <%= text_area_tag "respostas[#{i}][conteudo]", "", rows: 3, class: "textarea textarea-bordered w-full" %>
+
+          <% else %>
+            <p class="text-sm text-gray-500 italic">Tipo de pergunta desconhecido.</p>
+          <% end %>
+
+          <%= hidden_field_tag "respostas[#{i}][pergunta_index]", i %>
+        </div>
+      <% end %>
+      <%= hidden_field_tag :formulario_id, @formulario.id %>
+      <%= submit_tag "Enviar Respostas", class: "btn btn-success" %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<script>
+  function showToast(message) {
+    const toastContainer = document.getElementById("toast-container");
+    if (!toastContainer) return;
+
+    const toast = document.createElement("div");
+    toast.className = "alert alert-warning shadow-lg";
+    toast.innerHTML = `
+      <span>${message}</span>
+    `;
+
+    toastContainer.appendChild(toast);
+
+    // Remove o toast depois de 4s
+    setTimeout(() => {
+      toast.remove();
+    }, 4000);
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("resposta-formulario");
+
+    if (!form) return;
+
+    form.addEventListener("submit", (event) => {
+      const perguntas = form.querySelectorAll("[name^='respostas']");
+      const totalPerguntas = Math.max(...[...perguntas].map(p => {
+        const match = p.name.match(/respostas\[(\d+)\]/);
+        return match ? parseInt(match[1]) : -1;
+      })) + 1;
+
+      const respondidas = new Set();
+
+      perguntas.forEach(el => {
+        if (el.type === "radio" && el.checked) {
+          const match = el.name.match(/respostas\[(\d+)\]/);
+          if (match) respondidas.add(match[1]);
+        } else if ((el.tagName === "TEXTAREA" || el.type === "text") && el.value.trim() !== "") {
+          const match = el.name.match(/respostas\[(\d+)\]/);
+          if (match) respondidas.add(match[1]);
+        }
+      });
+
+      if (respondidas.size < totalPerguntas) {
+        event.preventDefault();
+        showToast("⚠️ Por favor, responda todas as perguntas antes de enviar o formulário.");
+      }
+    });
+  });
+</script>
+
+
+
+<%= link_to "Voltar", formularios_path, class: "btn btn-outline mt-6" %>

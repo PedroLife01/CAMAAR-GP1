@@ -1,0 +1,40 @@
+<h1 class="text-2xl font-bold mb-6">🆕 Novo Formulário</h1>
+
+<%= form_with(model: @formulario, local: true, class: "space-y-4") do |f| %>
+  <div>
+    <%= f.label :titulo, class: "label" %>
+    <%= f.text_field :titulo, class: "input input-bordered w-full" %>
+  </div>
+
+  <div>
+    <%= f.label :descricao, class: "label" %>
+    <%= f.text_area :descricao, class: "textarea textarea-bordered w-full" %>
+  </div>
+
+  <div class="grid grid-cols-2 gap-4">
+    <div>
+      <%= f.label :data_abertura, "Data de Abertura", class: "label" %>
+      <%= f.datetime_local_field :data_abertura, class: "input input-bordered w-full" %>
+    </div>
+
+    <div>
+      <%= f.label :data_fechamento, "Data de Fechamento", class: "label" %>
+      <%= f.datetime_local_field :data_fechamento, class: "input input-bordered w-full" %>
+    </div>
+  </div>
+
+  <div>
+    <%= f.label :id_turma, "Turma", class: "label" %>
+    <%= f.collection_select :id_turma, @turmas, :id, :name, prompt: "Selecione", class: "select select-bordered w-full" %>
+  </div>
+
+  <div>
+    <%= f.label :id_template, "Template", class: "label" %>
+    <%= f.collection_select :id_template, @templates, :id, :nome, prompt: "Selecione", class: "select select-bordered w-full" %>
+  </div>
+
+  <div>
+    <%= f.submit "Salvar Formulário", class: "btn btn-success" %>
+    <%= link_to "Cancelar", formularios_path, class: "btn btn-outline ml-2" %>
+  </div>
+<% end %>

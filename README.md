@@ -33,11 +33,15 @@ bundle install
 # Instale pacotes JS (se usar webpack ou similar)
 yarn install
 
+#Crie um arquivo .env na raiz com suas credenciais do PostgreSQL, assim:
+DB_USERNAME=seu_usuario
+DB_PASSWORD=sua_senha
+
 # Configure o banco de dados
 rails db:create db:migrate db:seed
 
 # Rode o servidor
-rails server
+rails server ou ./bin/dev
 
 ```
 

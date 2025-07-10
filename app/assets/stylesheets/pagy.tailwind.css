@@ -1,0 +1,15 @@
+.pagy a {
+    @apply block rounded-lg px-3 py-1 bg-base-200 hover:bg-base-300 text-base-content;
+}
+
+.pagy .active {
+    @apply btn btn-active bg-neutral text-neutral-content;
+}
+
+.pagy .disabled {
+    @apply btn btn-disabled;
+}
+
+.pagy span.gap {
+    @apply btn btn-disabled;
+}

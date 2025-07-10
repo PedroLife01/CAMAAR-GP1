@@ -1,0 +1,50 @@
+<div class="p-6">
+  <h1 class="text-3xl font-bold mb-6">Turmas</h1>
+
+  <% if current_user.ocupacao == "docente" %>
+    <div class="mb-4">
+      <%= link_to "Nova Turma", new_turma_path, class: "btn btn-primary" %>
+    </div>
+  <% end %>
+
+  <% if @turmas.any? %>
+    <div class="overflow-x-auto">
+      <table class="table table-zebra w-full">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Código</th>
+            <th>Período</th>
+            <th>Horário</th>
+            <th>Docente</th>
+            <% if current_user.ocupacao == "docente" %>
+              <th>Ações</th>
+            <% end %>
+          </tr>
+        </thead>
+        <tbody>
+          <% @turmas.each do |turma| %>
+            <tr>
+              <td><%= turma.name %></td>
+              <td><%= turma.code %></td>
+              <td><%= turma.periodo %></td>
+              <td><%= turma.horario %></td>
+              <td><%= turma.docente&.nome || "Não informado" %></td>
+              <td>
+                <div class="flex gap-2">
+                <% if current_user.ocupacao == "docente" %>
+                    <%= link_to "Mostrar", turma_path(turma), class: "btn btn-sm btn-info" %>
+                    <%= link_to "Editar", edit_turma_path(turma), class: "btn btn-sm btn-warning" %>
+                    <%= link_to "Excluir", turma_path(turma), method: :delete, data: { confirm: "Tem certeza?" }, class: "btn btn-sm btn-error" %>
+                  <% end %>
+                </div>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% else %>
+    <div class="alert alert-info mt-4">Nenhuma turma cadastrada ainda.</div>
+  <% end %>
+</div>

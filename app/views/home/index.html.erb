@@ -1,0 +1,38 @@
+<div class="max-w-4xl mx-auto mt-14 p-8 bg-base-200 rounded-xl shadow-lg">
+  <h1 class="text-3xl font-bold mb-4 text-primary text-center">Bem‑vindo ao CAMAAR</h1>
+  <p class="mb-6 text-base-content text-center">
+    Sistema de gerenciamento de formulários e turmas da Universidade.
+  </p>
+
+  <% if user_signed_in? %>
+    <div class="alert alert-success mb-6 text-center">
+      Você está logado como <strong><%= current_user.nome %></strong> (<%= current_user.ocupacao %>)
+    </div>
+
+    <div class="flex justify-center gap-4 flex-wrap">
+      <% if current_user.ocupacao == "docente" %>
+        <%= link_to "Importar do SIGAA", sigaa_importar_path,
+                    class: "btn btn-primary" %>
+      <% end %>
+      <% if current_user.ocupacao == "admin" %>
+        <%= link_to "Painel Administrativo", rails_admin_path,
+                    class: "btn btn-secondary" %>
+      <% end %>
+      <%= button_to "Sair", destroy_user_session_path, method: :delete, class: "btn btn-error" %>
+    </div>
+  <% else %>
+    <div class="text-center">
+      <%= link_to "Fazer Login", new_user_session_path,
+                  class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
+<div class="max-w-2xl mx-auto mt-10 p-8 bg-base-200 rounded-xl shadow-md">
+  <h2 class="text-2xl font-bold mb-6 text-center text-primary">Sobre o CAMAAR</h2>
+  <p class="mb-4">
+    O CAMAAR é um sistema desenvolvido para facilitar o gerenciamento de turmas e formulários na Universidade. Ele permite que docentes importem dados do SIGAA e gerenciem suas turmas de forma eficiente.
+  </p>
+  <p>
+    Para mais informações, consulte a documentação ou entre em contato com o suporte.
+  </p>
+</div>

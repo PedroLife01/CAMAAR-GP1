@@ -1,0 +1,9 @@
+<%= turbo_stream.replace "participantes_frame" do %>
+  <%= render partial: "turmas/participantes", locals: {
+        turma: @turma,
+        alunos_vinculados: @alunos_vinculados,
+        alunos_busca: @alunos_busca,
+        pagy: @pagy,
+        pagy_vinculados: @pagy_vinculados
+      } %>
+<% end %>

@@ -1,0 +1,8 @@
+<li id="<%= dom_id(aluno) %>" class="flex justify-between items-center bg-base-100 p-3 rounded shadow">
+  <div>
+    <strong><%= aluno.nome %></strong><br>
+    <small><%= aluno.email %> • <%= aluno.matricula %></small>
+  </div>
+  <%= button_to "Remover", turma_turmas_aluno_path(turma, turma.turmas_alunos.find_by(aluno_id: aluno.id)), method: :delete,
+        data: { turbo_stream: true }, class: "btn btn-sm btn-error" %>
+</li>

@@ -1,0 +1,97 @@
+<div>
+  <!-- Formulário de busca -->
+  <%= form_with url: turma_path(turma), method: :get, data: { turbo_frame: "participantes_frame" }, class: "mb-4 flex items-end gap-2" do |form| %>
+    <div class="form-control w-full">
+      <%= form.label :q, "Buscar aluno por nome, matrícula ou e-mail", class: "label" %>
+      <%= form.text_field :q, value: params[:q], class: "input input-bordered w-full", placeholder: "Ex: João, 202100123, joao@email.com" %>
+    </div>
+    <%= form.submit "Buscar", class: "btn btn-primary" %>
+  <% end %>
+
+  <!-- Lista de alunos vinculados -->
+  <% if alunos_vinculados&.any? %>
+    <div class="mb-6">
+      <h3 class="text-lg font-bold mb-2">Alunos já participantes</h3>
+      <div class="overflow-x-auto rounded shadow">
+        <table class="table table-zebra w-full">
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Matrícula</th>
+              <th>Curso</th>
+              <th>Email</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% alunos_vinculados.each do |aluno| %>
+              <tr>
+                <td><%= aluno.nome %></td>
+                <td><%= aluno.matricula %></td>
+                <td><%= aluno.curso %></td>
+                <td><%= aluno.email %></td>
+                <td>
+                  <% turma_aluno = TurmasAluno.find_by(turma_id: turma.id, aluno_id: aluno.id) %>
+                  <% if turma_aluno %>
+                    <%= button_to "Remover", turma_turmas_aluno_path(turma, turma_aluno),
+                        method: :delete,
+                        data: { turbo_frame: "participantes_frame", turbo_confirm: "Tem certeza que deseja remover?" },
+                        class: "btn btn-sm btn-error" %>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+        <div class="mt-4">
+          <%= pagy_nav_tailwind(pagy_vinculados, link_extra: 'data-turbo-frame="participantes_frame"') %>
+        </div>
+    </div>
+  <% else %>
+    <div class="alert alert-info mb-6">Nenhum aluno vinculado a esta turma ainda.</div>
+  <% end %>
+
+  <% if params[:q].present? %>
+    <% if alunos_busca&.any? %>
+      <div class="mt-6">
+        <h3 class="text-lg font-bold mb-2">Resultados da busca</h3>
+        <div class="overflow-x-auto rounded shadow">
+          <table class="table table-zebra w-full">
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>Matrícula</th>
+                <th>Curso</th>
+                <th>Email</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% alunos_busca.each do |aluno| %>
+                <tr>
+                  <td><%= aluno.nome %></td>
+                  <td><%= aluno.matricula %></td>
+                  <td><%= aluno.curso %></td>
+                  <td><%= aluno.email %></td>
+                  <td>
+                    <%= button_to "Vincular", turma_turmas_alunos_path(turma), method: :post,
+                        params: { aluno_id: aluno.id, q: params[:q] },
+                        form: { data: { turbo_frame: "participantes_frame" } },
+                        class: "btn btn-sm btn-success" %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="mt-4">
+          <%= pagy_nav_tailwind(pagy, link_extra: 'data-turbo-frame="participantes_frame"') %>
+        </div>
+      </div>
+    <% else %>
+      <div class="alert alert-warning mt-2">Nenhum aluno encontrado com esse critério.</div>
+    <% end %>
+  <% end %>
+</div>

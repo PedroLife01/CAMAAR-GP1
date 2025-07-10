@@ -1,0 +1,29 @@
+<div class="max-w-xl mx-auto mt-10 p-8 bg-base-200 rounded-xl shadow-md">
+  <h1 class="text-2xl font-bold mb-6 text-center text-primary">Importar Dados do SIGAA</h1>
+
+  <div class="alert-info mb-6 shadow-md p-4 rounded-lg text-base-content white">
+    <h3 class="font-bold text-lg mb-2">📥 Arquivos de Exemplo</h3>
+    <p class="mb-1">Baixe os arquivos de exemplo e use como modelo para importar dados do SIGAA:</p>
+    <ul class="list-disc ml-6">
+      <li><a href="/sigaa_exemplos/classes_exemplo.json" class="link link-primary">classes_exemplo.json</a></li>
+      <li><a href="/sigaa_exemplos/class_members_exemplo.json" class="link link-primary">class_members_exemplo.json</a></li>
+    </ul>
+  </div>
+
+
+  <%= form_with url: sigaa_importar_path, multipart: true, local: true do |f| %>
+    <div class="form-control mb-4">
+      <%= label_tag :classes_file, "Arquivo de turmas (classes.json)", class: "label" %>
+      <%= file_field_tag :classes_file, accept: ".json", class: "file-input file-input-bordered w-full" %>
+    </div>
+
+    <div class="form-control mb-6">
+      <%= label_tag :members_file, "Arquivo de membros (class_members.json)", class: "label" %>
+      <%= file_field_tag :members_file, accept: ".json", class: "file-input file-input-bordered w-full" %>
+    </div>
+
+    <div class="text-center">
+      <%= submit_tag "Importar", class: "btn btn-primary w-full" %>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,20 @@
+[
+    {
+        "code": "CIC001",
+        "name": "Algoritmos e Estruturas de Dados",
+        "class": {
+            "horario": "Segundas 10h-12h",
+            "sala": "BSS 202",
+            "semestre": "2025.1"
+        }
+    },
+    {
+        "code": "CIC002",
+        "name": "Banco de Dados",
+        "class": {
+            "horario": "Quintas 14h-16h",
+            "sala": "ICC Sul 304",
+            "semestre": "2025.1"
+        }
+    }
+]

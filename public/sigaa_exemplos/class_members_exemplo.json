@@ -1,0 +1,50 @@
+[
+    {
+        "code": "CIC001",
+        "docente": {
+            "nome": "João da Silva",
+            "email": "joao.silva@unb.br",
+            "usuario": "jsilva",
+            "departamento": "Departamento de Computação",
+            "formacao": "Doutorado"
+        },
+        "dicente": [
+            {
+                "nome": "Ana Oliveira",
+                "email": "ana.oliveira@aluno.unb.br",
+                "matricula": "200012345",
+                "usuario": "ana.oliveira",
+                "curso": "Ciência da Computação",
+                "formacao": "Graduação"
+            },
+            {
+                "nome": "Carlos Souza",
+                "email": "carlos.souza@aluno.unb.br",
+                "matricula": "200043210",
+                "usuario": "carlos.souza",
+                "curso": "Ciência da Computação",
+                "formacao": "Graduação"
+            }
+        ]
+    },
+    {
+        "code": "CIC002",
+        "docente": {
+            "nome": "Maria Ferreira",
+            "email": "maria.ferreira@unb.br",
+            "usuario": "mferreira",
+            "departamento": "Departamento de Computação",
+            "formacao": "Mestrado"
+        },
+        "dicente": [
+            {
+                "nome": "Luciana Prado",
+                "email": "luciana.prado@aluno.unb.br",
+                "matricula": "200098765",
+                "usuario": "luciana.prado",
+                "curso": "Engenharia de Software",
+                "formacao": "Graduação"
+            }
+        ]
+    }
+]

@@ -1,0 +1,73 @@
+<%= turbo_frame_tag dom_id(@turma) do %>
+  <%= form_with model: @turma, local: true do |f| %>
+    
+    <% if @turma.errors.any? %>
+      <div class="alert alert-error mb-4">
+        <h3 class="font-bold">Erros ao salvar a turma:</h3>
+        <ul class="list-disc ml-4">
+          <% @turma.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <!-- Nome da Turma -->
+    <div class="form-control mb-4">
+      <label class="label">
+        <span class="label-text">Nome da Turma</span>
+      </label>
+      <%= f.text_field :name, class: "input input-bordered w-full" %>
+    </div>
+
+    <!-- Código da Turma -->
+    <div class="form-control mb-4">
+      <label class="label">
+        <span class="label-text">Código da Turma</span>
+      </label>
+      <%= f.text_field :code, class: "input input-bordered w-full" %>
+    </div>
+
+    <!-- Período -->
+    <div class="form-control mb-4">
+      <label class="label">
+        <span class="label-text">Período (ex: 2025.1)</span>
+      </label>
+      <%= text_field_tag "class_data[semester]", @turma.class_data&.dig("semester"), class: "input input-bordered w-full" %>
+    </div>
+
+    <!-- Código da Classe -->
+    <div class="form-control mb-4">
+      <label class="label">
+        <span class="label-text">Código da Classe</span>
+      </label>
+      <%= text_field_tag "class_data[classCode]", @turma.class_data&.dig("classCode"), class: "input input-bordered w-full" %>
+    </div>
+
+    <!-- Horário -->
+    <div class="form-control mb-4">
+      <label class="label">
+        <span class="label-text">Horário</span>
+      </label>
+      <%= text_field_tag "class_data[time]", @turma.class_data&.dig("time"), class: "input input-bordered w-full" %>
+    </div>
+
+    <!-- Docente -->
+    <% if current_user.ocupacao == "docente" %>
+      <%= f.hidden_field :id_docente, value: current_user.id %>
+    <% else %>
+      <div class="form-control mb-4">
+        <label class="label">
+          <span class="label-text">Docente responsável</span>
+        </label>
+        <%= f.collection_select :id_docente, User.where(ocupacao: :docente), :id, :nome, prompt: "Selecione", class: "select select-bordered w-full" %>
+      </div>
+    <% end %>
+
+    <!-- Botão -->
+    <div class="form-control mt-6">
+      <%= f.submit (@turma.new_record? ? "Criar Turma" : "Atualizar Turma"), class: "btn btn-primary" %>
+    </div>
+
+  <% end %>
+<% end %>
