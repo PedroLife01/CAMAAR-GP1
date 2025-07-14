@@ -1,3 +1,4 @@
-RSpec.configure do |config|
-  config.include FactoryBot::Syntax::Methods
-end
+# O CÓDIGO CORRETO PARA CUCUMBER
+require 'factory_bot_rails'
+
+World(FactoryBot::Syntax::Methods)
