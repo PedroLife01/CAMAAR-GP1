@@ -1,33 +1,23 @@
 # features/step_definitions/visualizar_resultados_steps.rb
 
-Given('estou autenticado como {string}') do |_papel|
-  pending 'login admin'
-end
-
-Given('existe um formulário encerrado com respostas') do
-  pending 'criar formulário respondido'
-end
-
 Given('existe um formulário encerrado sem respostas') do
-  pending 'criar formulário sem respostas'
+  @formulario = FactoryBot.create(:formulario, :encerrado)
 end
 
-When('visito a página {string} para esse formulário') do |_pagina|
-  pending 'abrir resultados'
+When('visito a página {string} para esse formulário') do |pagina|
+  # Exemplo: /formularios/1/resultados
+  visit "/formularios/#{@formulario.id}/#{pagina.downcase}"
 end
 
 Then('devo ver uma lista com as respostas') do
-  pending 'listar respostas'
+  # Exemplo: verifica se existe uma tabela ou lista de respostas
+  expect(page).to have_css('.lista-respostas') # Adapte o seletor
 end
 
 Then('não devo ver gráficos') do
-  pending 'verificar ausência de gráfico'
+  expect(page).not_to have_css('.grafico-resultados') # Adapte o seletor
 end
 
-Then('devo ver o texto {string}') do |_texto|
-  pending 'validar texto mostrado'
-end
-
-Then('devo ver a mensagem {string}') do |_mensagem|
-  pending 'validar mensagem de sem respostas'
+Then('devo ver o texto {string}') do |texto|
+  expect(page).to have_text(texto)
 end

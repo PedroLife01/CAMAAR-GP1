@@ -1,41 +1,31 @@
 # features/step_definitions/criar_formulario_avaliacao_steps.rb
 
-Given('estou autenticado como {string}') do |_papel|
-  pending 'implementar autenticação do usuário'
+Given('existe um template chamado {string}') do |template_nome|
+  FactoryBot.create(:template, nome: template_nome)
 end
 
-Given('existe um template chamado {string}') do |_template|
-  pending 'implementar criação/verificação do template'
+Given('a turma {string} já possui um formulário ativo') do |turma_nome|
+  turma = FactoryBot.create(:turma, nome: turma_nome)
+  FactoryBot.create(:formulario, turma: turma, status: 'ativo')
 end
 
-Given('a turma {string} já possui um formulário ativo') do |_turma|
-  pending 'implementar verificação ou criação de formulário ativo para a turma'
+When('seleciono o template {string}') do |template_nome|
+  select template_nome, from: 'Template' 
 end
 
-When('seleciono o template {string}') do |_template|
-  pending 'implementar seleção de template'
+When('seleciono as turmas {string} e {string}') do |turma1, turma2|
+  check turma1
+  check turma2
 end
 
-When('seleciono as turmas {string} e {string}') do |_turma1, _turma2|
-  pending 'implementar seleção de múltiplas turmas'
+When('seleciono a turma {string}') do |turma_nome|
+  select turma_nome, from: 'Turma' 
 end
 
-When('seleciono a turma {string}') do |_turma|
-  pending 'implementar seleção de uma turma'
-end
-
-When('defino a data de encerramento para {string}') do |_data_encerramento|
-  pending 'implementar definição da data de encerramento'
-end
-
-When('clico em {string}') do |_botao|
-  pending 'implementar clique em botão'
-end
-
-Then('devo ver a mensagem {string}') do |_mensagem|
-  pending 'validar mensagem na tela'
+When('defino a data de encerramento para {string}') do |data|
+  fill_in 'Data de Encerramento', with: data 
 end
 
 Then('o novo formulário não deve ser criado') do
-  pending 'garantir que o novo formulário não foi criado'
+  expect { click_button 'Salvar' }.not_to change(Formulario, :count)
 end
