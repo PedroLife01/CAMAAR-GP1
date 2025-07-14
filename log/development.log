@@ -39768,3 +39768,835 @@ Migrating to AddUniqueIndexToRespostas (20250710054309)
 [dotenv] Loaded [33m.env[0m
 [dotenv] Set [36mDB_USERNAME[0m and [36mDB_PASSWORD[0m
 [dotenv] Loaded [33m.env[0m
+[dotenv] Set [36mDB_USERNAME[0m and [36mDB_PASSWORD[0m
+[dotenv] Loaded [33m.env[0m
+[dotenv] Set [36mDB_USERNAME[0m and [36mDB_PASSWORD[0m
+[dotenv] Loaded [33m.env[0m
+[dotenv] Set [36mDB_USERNAME[0m and [36mDB_PASSWORD[0m
+[dotenv] Loaded [33m.env[0m
+  [1m[35m (263.7ms)[0m  [1m[35mCREATE DATABASE "camaar_development" ENCODING = 'unicode'[0m
+  [1m[35m (35.9ms)[0m  [1m[35mCREATE DATABASE "camaar_test" ENCODING = 'unicode'[0m
+  [1m[35m (4.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4241813582003914140)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (5.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (10.6ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(4241813582003914140)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Load (58.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Update All (25.1ms)[0m  [1m[33mUPDATE "turmas" SET "id_docente" = $1 WHERE "turmas"."id_docente" = $2[0m  [["id_docente", nil], ["id_docente", 1]]
+  [1m[36mTurmasAluno Load (612.3ms)[0m  [1m[34mSELECT "turmas_alunos".* FROM "turmas_alunos" WHERE "turmas_alunos"."aluno_id" = $1[0m  [["aluno_id", 1]]
+  [1m[36mTemplate Load (60.8ms)[0m  [1m[34mSELECT "templates".* FROM "templates" WHERE "templates"."id_user" = $1[0m  [["id_user", 1]]
+  [1m[36mControleDeEnvio Load (13.8ms)[0m  [1m[34mSELECT "controle_de_envios".* FROM "controle_de_envios" WHERE "controle_de_envios"."aluno_id" = $1[0m  [["aluno_id", 1]]
+  [1m[36mUser Destroy (19.5ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 1]]
+  [1m[36mTRANSACTION (122.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Update All (1.9ms)[0m  [1m[33mUPDATE "turmas" SET "id_docente" = $1 WHERE "turmas"."id_docente" = $2[0m  [["id_docente", nil], ["id_docente", 2]]
+  [1m[36mTurmasAluno Load (1.8ms)[0m  [1m[34mSELECT "turmas_alunos".* FROM "turmas_alunos" WHERE "turmas_alunos"."aluno_id" = $1[0m  [["aluno_id", 2]]
+  [1m[36mTurmasAluno Destroy (0.6ms)[0m  [1m[31mDELETE FROM "turmas_alunos" WHERE "turmas_alunos"."id" = $1[0m  [["id", 1]]
+  [1m[36mTemplate Load (0.6ms)[0m  [1m[34mSELECT "templates".* FROM "templates" WHERE "templates"."id_user" = $1[0m  [["id_user", 2]]
+  [1m[36mControleDeEnvio Load (0.4ms)[0m  [1m[34mSELECT "controle_de_envios".* FROM "controle_de_envios" WHERE "controle_de_envios"."aluno_id" = $1[0m  [["aluno_id", 2]]
+  [1m[36mUser Destroy (2.4ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 2]]
+  [1m[36mTRANSACTION (11.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Update All (2.7ms)[0m  [1m[33mUPDATE "turmas" SET "id_docente" = $1 WHERE "turmas"."id_docente" = $2[0m  [["id_docente", nil], ["id_docente", 3]]
+  [1m[36mTurmasAluno Load (0.6ms)[0m  [1m[34mSELECT "turmas_alunos".* FROM "turmas_alunos" WHERE "turmas_alunos"."aluno_id" = $1[0m  [["aluno_id", 3]]
+  [1m[36mTurmasAluno Destroy (0.5ms)[0m  [1m[31mDELETE FROM "turmas_alunos" WHERE "turmas_alunos"."id" = $1[0m  [["id", 2]]
+  [1m[36mTemplate Load (0.5ms)[0m  [1m[34mSELECT "templates".* FROM "templates" WHERE "templates"."id_user" = $1[0m  [["id_user", 3]]
+  [1m[36mControleDeEnvio Load (0.4ms)[0m  [1m[34mSELECT "controle_de_envios".* FROM "controle_de_envios" WHERE "controle_de_envios"."aluno_id" = $1[0m  [["aluno_id", 3]]
+  [1m[36mUser Destroy (0.8ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 3]]
+  [1m[36mTRANSACTION (4.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Update All (1.4ms)[0m  [1m[33mUPDATE "turmas" SET "id_docente" = $1 WHERE "turmas"."id_docente" = $2[0m  [["id_docente", nil], ["id_docente", 4]]
+  [1m[36mTurmasAluno Load (0.4ms)[0m  [1m[34mSELECT "turmas_alunos".* FROM "turmas_alunos" WHERE "turmas_alunos"."aluno_id" = $1[0m  [["aluno_id", 4]]
+  [1m[36mTurmasAluno Destroy (0.3ms)[0m  [1m[31mDELETE FROM "turmas_alunos" WHERE "turmas_alunos"."id" = $1[0m  [["id", 3]]
+  [1m[36mTemplate Load (0.4ms)[0m  [1m[34mSELECT "templates".* FROM "templates" WHERE "templates"."id_user" = $1[0m  [["id_user", 4]]
+  [1m[36mControleDeEnvio Load (0.4ms)[0m  [1m[34mSELECT "controle_de_envios".* FROM "controle_de_envios" WHERE "controle_de_envios"."aluno_id" = $1[0m  [["aluno_id", 4]]
+  [1m[36mUser Destroy (0.8ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 4]]
+  [1m[36mTRANSACTION (7.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Update All (1.5ms)[0m  [1m[33mUPDATE "turmas" SET "id_docente" = $1 WHERE "turmas"."id_docente" = $2[0m  [["id_docente", nil], ["id_docente", 5]]
+  [1m[36mTurmasAluno Load (0.4ms)[0m  [1m[34mSELECT "turmas_alunos".* FROM "turmas_alunos" WHERE "turmas_alunos"."aluno_id" = $1[0m  [["aluno_id", 5]]
+  [1m[36mTurmasAluno Destroy (0.7ms)[0m  [1m[31mDELETE FROM "turmas_alunos" WHERE "turmas_alunos"."id" = $1[0m  [["id", 4]]
+  [1m[36mTemplate Load (5.5ms)[0m  [1m[34mSELECT "templates".* FROM "templates" WHERE "templates"."id_user" = $1[0m  [["id_user", 5]]
+  [1m[36mControleDeEnvio Load (0.4ms)[0m  [1m[34mSELECT "controle_de_envios".* FROM "controle_de_envios" WHERE "controle_de_envios"."aluno_id" = $1[0m  [["aluno_id", 5]]
+  [1m[36mUser Destroy (0.6ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 5]]
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Update All (1.8ms)[0m  [1m[33mUPDATE "turmas" SET "id_docente" = $1 WHERE "turmas"."id_docente" = $2[0m  [["id_docente", nil], ["id_docente", 6]]
+  [1m[36mTurmasAluno Load (0.5ms)[0m  [1m[34mSELECT "turmas_alunos".* FROM "turmas_alunos" WHERE "turmas_alunos"."aluno_id" = $1[0m  [["aluno_id", 6]]
+  [1m[36mTurmasAluno Destroy (0.3ms)[0m  [1m[31mDELETE FROM "turmas_alunos" WHERE "turmas_alunos"."id" = $1[0m  [["id", 5]]
+  [1m[36mTemplate Load (0.3ms)[0m  [1m[34mSELECT "templates".* FROM "templates" WHERE "templates"."id_user" = $1[0m  [["id_user", 6]]
+  [1m[36mControleDeEnvio Load (0.3ms)[0m  [1m[34mSELECT "controle_de_envios".* FROM "controle_de_envios" WHERE "controle_de_envios"."aluno_id" = $1[0m  [["aluno_id", 6]]
+  [1m[36mUser Destroy (0.6ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 6]]
+  [1m[36mTRANSACTION (10.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Update All (1.6ms)[0m  [1m[33mUPDATE "turmas" SET "id_docente" = $1 WHERE "turmas"."id_docente" = $2[0m  [["id_docente", nil], ["id_docente", 7]]
+  [1m[36mTurmasAluno Load (0.2ms)[0m  [1m[34mSELECT "turmas_alunos".* FROM "turmas_alunos" WHERE "turmas_alunos"."aluno_id" = $1[0m  [["aluno_id", 7]]
+  [1m[36mTurmasAluno Destroy (0.3ms)[0m  [1m[31mDELETE FROM "turmas_alunos" WHERE "turmas_alunos"."id" = $1[0m  [["id", 6]]
+  [1m[36mTemplate Load (0.3ms)[0m  [1m[34mSELECT "templates".* FROM "templates" WHERE "templates"."id_user" = $1[0m  [["id_user", 7]]
+  [1m[36mControleDeEnvio Load (0.2ms)[0m  [1m[34mSELECT "controle_de_envios".* FROM "controle_de_envios" WHERE "controle_de_envios"."aluno_id" = $1[0m  [["aluno_id", 7]]
+  [1m[36mUser Destroy (0.9ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 7]]
+  [1m[36mTRANSACTION (11.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Update All (1.6ms)[0m  [1m[33mUPDATE "turmas" SET "id_docente" = $1 WHERE "turmas"."id_docente" = $2[0m  [["id_docente", nil], ["id_docente", 8]]
+  [1m[36mTurmasAluno Load (0.3ms)[0m  [1m[34mSELECT "turmas_alunos".* FROM "turmas_alunos" WHERE "turmas_alunos"."aluno_id" = $1[0m  [["aluno_id", 8]]
+  [1m[36mTurmasAluno Destroy (0.3ms)[0m  [1m[31mDELETE FROM "turmas_alunos" WHERE "turmas_alunos"."id" = $1[0m  [["id", 7]]
+  [1m[36mTemplate Load (0.2ms)[0m  [1m[34mSELECT "templates".* FROM "templates" WHERE "templates"."id_user" = $1[0m  [["id_user", 8]]
+  [1m[36mControleDeEnvio Load (0.5ms)[0m  [1m[34mSELECT "controle_de_envios".* FROM "controle_de_envios" WHERE "controle_de_envios"."aluno_id" = $1[0m  [["aluno_id", 8]]
+  [1m[36mUser Destroy (0.4ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 8]]
+  [1m[36mTRANSACTION (6.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Update All (1.4ms)[0m  [1m[33mUPDATE "turmas" SET "id_docente" = $1 WHERE "turmas"."id_docente" = $2[0m  [["id_docente", nil], ["id_docente", 9]]
+  [1m[36mTurmasAluno Load (0.3ms)[0m  [1m[34mSELECT "turmas_alunos".* FROM "turmas_alunos" WHERE "turmas_alunos"."aluno_id" = $1[0m  [["aluno_id", 9]]
+  [1m[36mTurmasAluno Destroy (0.3ms)[0m  [1m[31mDELETE FROM "turmas_alunos" WHERE "turmas_alunos"."id" = $1[0m  [["id", 8]]
+  [1m[36mTemplate Load (0.5ms)[0m  [1m[34mSELECT "templates".* FROM "templates" WHERE "templates"."id_user" = $1[0m  [["id_user", 9]]
+  [1m[36mControleDeEnvio Load (0.5ms)[0m  [1m[34mSELECT "controle_de_envios".* FROM "controle_de_envios" WHERE "controle_de_envios"."aluno_id" = $1[0m  [["aluno_id", 9]]
+  [1m[36mUser Destroy (0.7ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 9]]
+  [1m[36mTRANSACTION (6.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Update All (1.7ms)[0m  [1m[33mUPDATE "turmas" SET "id_docente" = $1 WHERE "turmas"."id_docente" = $2[0m  [["id_docente", nil], ["id_docente", 10]]
+  [1m[36mTurmasAluno Load (0.3ms)[0m  [1m[34mSELECT "turmas_alunos".* FROM "turmas_alunos" WHERE "turmas_alunos"."aluno_id" = $1[0m  [["aluno_id", 10]]
+  [1m[36mTurmasAluno Destroy (0.3ms)[0m  [1m[31mDELETE FROM "turmas_alunos" WHERE "turmas_alunos"."id" = $1[0m  [["id", 9]]
+  [1m[36mTemplate Load (0.2ms)[0m  [1m[34mSELECT "templates".* FROM "templates" WHERE "templates"."id_user" = $1[0m  [["id_user", 10]]
+  [1m[36mControleDeEnvio Load (0.7ms)[0m  [1m[34mSELECT "controle_de_envios".* FROM "controle_de_envios" WHERE "controle_de_envios"."aluno_id" = $1[0m  [["aluno_id", 10]]
+  [1m[36mUser Destroy (0.7ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 10]]
+  [1m[36mTRANSACTION (5.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Update All (2.2ms)[0m  [1m[33mUPDATE "turmas" SET "id_docente" = $1 WHERE "turmas"."id_docente" = $2[0m  [["id_docente", nil], ["id_docente", 11]]
+  [1m[36mTurmasAluno Load (0.5ms)[0m  [1m[34mSELECT "turmas_alunos".* FROM "turmas_alunos" WHERE "turmas_alunos"."aluno_id" = $1[0m  [["aluno_id", 11]]
+  [1m[36mTurmasAluno Destroy (0.5ms)[0m  [1m[31mDELETE FROM "turmas_alunos" WHERE "turmas_alunos"."id" = $1[0m  [["id", 10]]
+  [1m[36mTemplate Load (0.4ms)[0m  [1m[34mSELECT "templates".* FROM "templates" WHERE "templates"."id_user" = $1[0m  [["id_user", 11]]
+  [1m[36mControleDeEnvio Load (1.3ms)[0m  [1m[34mSELECT "controle_de_envios".* FROM "controle_de_envios" WHERE "controle_de_envios"."aluno_id" = $1[0m  [["aluno_id", 11]]
+  [1m[36mUser Destroy (0.8ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 11]]
+  [1m[36mTRANSACTION (8.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Update All (3.7ms)[0m  [1m[33mUPDATE "turmas" SET "id_docente" = $1 WHERE "turmas"."id_docente" = $2[0m  [["id_docente", nil], ["id_docente", 12]]
+  [1m[36mTurmasAluno Load (0.5ms)[0m  [1m[34mSELECT "turmas_alunos".* FROM "turmas_alunos" WHERE "turmas_alunos"."aluno_id" = $1[0m  [["aluno_id", 12]]
+  [1m[36mTurmasAluno Destroy (0.4ms)[0m  [1m[31mDELETE FROM "turmas_alunos" WHERE "turmas_alunos"."id" = $1[0m  [["id", 11]]
+  [1m[36mTemplate Load (0.3ms)[0m  [1m[34mSELECT "templates".* FROM "templates" WHERE "templates"."id_user" = $1[0m  [["id_user", 12]]
+  [1m[36mControleDeEnvio Load (0.4ms)[0m  [1m[34mSELECT "controle_de_envios".* FROM "controle_de_envios" WHERE "controle_de_envios"."aluno_id" = $1[0m  [["aluno_id", 12]]
+  [1m[36mUser Destroy (0.5ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 12]]
+  [1m[36mTRANSACTION (7.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Update All (6.5ms)[0m  [1m[33mUPDATE "turmas" SET "id_docente" = $1 WHERE "turmas"."id_docente" = $2[0m  [["id_docente", nil], ["id_docente", 13]]
+  [1m[36mTurmasAluno Load (0.8ms)[0m  [1m[34mSELECT "turmas_alunos".* FROM "turmas_alunos" WHERE "turmas_alunos"."aluno_id" = $1[0m  [["aluno_id", 13]]
+  [1m[36mTurmasAluno Destroy (0.5ms)[0m  [1m[31mDELETE FROM "turmas_alunos" WHERE "turmas_alunos"."id" = $1[0m  [["id", 12]]
+  [1m[36mTemplate Load (0.3ms)[0m  [1m[34mSELECT "templates".* FROM "templates" WHERE "templates"."id_user" = $1[0m  [["id_user", 13]]
+  [1m[36mControleDeEnvio Load (0.2ms)[0m  [1m[34mSELECT "controle_de_envios".* FROM "controle_de_envios" WHERE "controle_de_envios"."aluno_id" = $1[0m  [["aluno_id", 13]]
+  [1m[36mUser Destroy (0.5ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 13]]
+  [1m[36mTRANSACTION (6.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Update All (2.4ms)[0m  [1m[33mUPDATE "turmas" SET "id_docente" = $1 WHERE "turmas"."id_docente" = $2[0m  [["id_docente", nil], ["id_docente", 14]]
+  [1m[36mTurmasAluno Load (0.2ms)[0m  [1m[34mSELECT "turmas_alunos".* FROM "turmas_alunos" WHERE "turmas_alunos"."aluno_id" = $1[0m  [["aluno_id", 14]]
+  [1m[36mTurmasAluno Destroy (0.3ms)[0m  [1m[31mDELETE FROM "turmas_alunos" WHERE "turmas_alunos"."id" = $1[0m  [["id", 13]]
+  [1m[36mTemplate Load (0.3ms)[0m  [1m[34mSELECT "templates".* FROM "templates" WHERE "templates"."id_user" = $1[0m  [["id_user", 14]]
+  [1m[36mControleDeEnvio Load (0.2ms)[0m  [1m[34mSELECT "controle_de_envios".* FROM "controle_de_envios" WHERE "controle_de_envios"."aluno_id" = $1[0m  [["aluno_id", 14]]
+  [1m[36mUser Destroy (0.4ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 14]]
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Update All (1.4ms)[0m  [1m[33mUPDATE "turmas" SET "id_docente" = $1 WHERE "turmas"."id_docente" = $2[0m  [["id_docente", nil], ["id_docente", 15]]
+  [1m[36mTurmasAluno Load (0.3ms)[0m  [1m[34mSELECT "turmas_alunos".* FROM "turmas_alunos" WHERE "turmas_alunos"."aluno_id" = $1[0m  [["aluno_id", 15]]
+  [1m[36mTurmasAluno Destroy (0.6ms)[0m  [1m[31mDELETE FROM "turmas_alunos" WHERE "turmas_alunos"."id" = $1[0m  [["id", 14]]
+  [1m[36mTemplate Load (0.5ms)[0m  [1m[34mSELECT "templates".* FROM "templates" WHERE "templates"."id_user" = $1[0m  [["id_user", 15]]
+  [1m[36mControleDeEnvio Load (0.8ms)[0m  [1m[34mSELECT "controle_de_envios".* FROM "controle_de_envios" WHERE "controle_de_envios"."aluno_id" = $1[0m  [["aluno_id", 15]]
+  [1m[36mUser Destroy (0.8ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 15]]
+  [1m[36mTRANSACTION (6.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Update All (1.4ms)[0m  [1m[33mUPDATE "turmas" SET "id_docente" = $1 WHERE "turmas"."id_docente" = $2[0m  [["id_docente", nil], ["id_docente", 16]]
+  [1m[36mTurmasAluno Load (0.3ms)[0m  [1m[34mSELECT "turmas_alunos".* FROM "turmas_alunos" WHERE "turmas_alunos"."aluno_id" = $1[0m  [["aluno_id", 16]]
+  [1m[36mTurmasAluno Destroy (0.6ms)[0m  [1m[31mDELETE FROM "turmas_alunos" WHERE "turmas_alunos"."id" = $1[0m  [["id", 15]]
+  [1m[36mTemplate Load (0.4ms)[0m  [1m[34mSELECT "templates".* FROM "templates" WHERE "templates"."id_user" = $1[0m  [["id_user", 16]]
+  [1m[36mControleDeEnvio Load (0.3ms)[0m  [1m[34mSELECT "controle_de_envios".* FROM "controle_de_envios" WHERE "controle_de_envios"."aluno_id" = $1[0m  [["aluno_id", 16]]
+  [1m[36mUser Destroy (0.5ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 16]]
+  [1m[36mTRANSACTION (6.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Update All (1.6ms)[0m  [1m[33mUPDATE "turmas" SET "id_docente" = $1 WHERE "turmas"."id_docente" = $2[0m  [["id_docente", nil], ["id_docente", 17]]
+  [1m[36mTurmasAluno Load (0.6ms)[0m  [1m[34mSELECT "turmas_alunos".* FROM "turmas_alunos" WHERE "turmas_alunos"."aluno_id" = $1[0m  [["aluno_id", 17]]
+  [1m[36mTurmasAluno Destroy (0.3ms)[0m  [1m[31mDELETE FROM "turmas_alunos" WHERE "turmas_alunos"."id" = $1[0m  [["id", 16]]
+  [1m[36mTemplate Load (0.3ms)[0m  [1m[34mSELECT "templates".* FROM "templates" WHERE "templates"."id_user" = $1[0m  [["id_user", 17]]
+  [1m[36mControleDeEnvio Load (0.2ms)[0m  [1m[34mSELECT "controle_de_envios".* FROM "controle_de_envios" WHERE "controle_de_envios"."aluno_id" = $1[0m  [["aluno_id", 17]]
+  [1m[36mUser Destroy (0.5ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 17]]
+  [1m[36mTRANSACTION (6.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Update All (2.2ms)[0m  [1m[33mUPDATE "turmas" SET "id_docente" = $1 WHERE "turmas"."id_docente" = $2[0m  [["id_docente", nil], ["id_docente", 18]]
+  [1m[36mTurmasAluno Load (0.3ms)[0m  [1m[34mSELECT "turmas_alunos".* FROM "turmas_alunos" WHERE "turmas_alunos"."aluno_id" = $1[0m  [["aluno_id", 18]]
+  [1m[36mTurmasAluno Destroy (0.4ms)[0m  [1m[31mDELETE FROM "turmas_alunos" WHERE "turmas_alunos"."id" = $1[0m  [["id", 17]]
+  [1m[36mTemplate Load (0.4ms)[0m  [1m[34mSELECT "templates".* FROM "templates" WHERE "templates"."id_user" = $1[0m  [["id_user", 18]]
+  [1m[36mControleDeEnvio Load (0.3ms)[0m  [1m[34mSELECT "controle_de_envios".* FROM "controle_de_envios" WHERE "controle_de_envios"."aluno_id" = $1[0m  [["aluno_id", 18]]
+  [1m[36mUser Destroy (0.4ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 18]]
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Update All (1.3ms)[0m  [1m[33mUPDATE "turmas" SET "id_docente" = $1 WHERE "turmas"."id_docente" = $2[0m  [["id_docente", nil], ["id_docente", 19]]
+  [1m[36mTurmasAluno Load (0.3ms)[0m  [1m[34mSELECT "turmas_alunos".* FROM "turmas_alunos" WHERE "turmas_alunos"."aluno_id" = $1[0m  [["aluno_id", 19]]
+  [1m[36mTurmasAluno Destroy (0.3ms)[0m  [1m[31mDELETE FROM "turmas_alunos" WHERE "turmas_alunos"."id" = $1[0m  [["id", 18]]
+  [1m[36mTemplate Load (0.3ms)[0m  [1m[34mSELECT "templates".* FROM "templates" WHERE "templates"."id_user" = $1[0m  [["id_user", 19]]
+  [1m[36mControleDeEnvio Load (0.4ms)[0m  [1m[34mSELECT "controle_de_envios".* FROM "controle_de_envios" WHERE "controle_de_envios"."aluno_id" = $1[0m  [["aluno_id", 19]]
+  [1m[36mUser Destroy (0.5ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 19]]
+  [1m[36mTRANSACTION (12.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Update All (1.3ms)[0m  [1m[33mUPDATE "turmas" SET "id_docente" = $1 WHERE "turmas"."id_docente" = $2[0m  [["id_docente", nil], ["id_docente", 20]]
+  [1m[36mTurmasAluno Load (0.3ms)[0m  [1m[34mSELECT "turmas_alunos".* FROM "turmas_alunos" WHERE "turmas_alunos"."aluno_id" = $1[0m  [["aluno_id", 20]]
+  [1m[36mTurmasAluno Destroy (0.3ms)[0m  [1m[31mDELETE FROM "turmas_alunos" WHERE "turmas_alunos"."id" = $1[0m  [["id", 19]]
+  [1m[36mTemplate Load (0.3ms)[0m  [1m[34mSELECT "templates".* FROM "templates" WHERE "templates"."id_user" = $1[0m  [["id_user", 20]]
+  [1m[36mControleDeEnvio Load (0.3ms)[0m  [1m[34mSELECT "controle_de_envios".* FROM "controle_de_envios" WHERE "controle_de_envios"."aluno_id" = $1[0m  [["aluno_id", 20]]
+  [1m[36mUser Destroy (0.4ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 20]]
+  [1m[36mTRANSACTION (5.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Update All (1.6ms)[0m  [1m[33mUPDATE "turmas" SET "id_docente" = $1 WHERE "turmas"."id_docente" = $2[0m  [["id_docente", nil], ["id_docente", 21]]
+  [1m[36mTurmasAluno Load (0.6ms)[0m  [1m[34mSELECT "turmas_alunos".* FROM "turmas_alunos" WHERE "turmas_alunos"."aluno_id" = $1[0m  [["aluno_id", 21]]
+  [1m[36mTurmasAluno Destroy (0.3ms)[0m  [1m[31mDELETE FROM "turmas_alunos" WHERE "turmas_alunos"."id" = $1[0m  [["id", 20]]
+  [1m[36mTemplate Load (0.2ms)[0m  [1m[34mSELECT "templates".* FROM "templates" WHERE "templates"."id_user" = $1[0m  [["id_user", 21]]
+  [1m[36mControleDeEnvio Load (0.2ms)[0m  [1m[34mSELECT "controle_de_envios".* FROM "controle_de_envios" WHERE "controle_de_envios"."aluno_id" = $1[0m  [["aluno_id", 21]]
+  [1m[36mUser Destroy (0.6ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 21]]
+  [1m[36mTRANSACTION (30.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Update All (1.8ms)[0m  [1m[33mUPDATE "turmas" SET "id_docente" = $1 WHERE "turmas"."id_docente" = $2[0m  [["id_docente", nil], ["id_docente", 22]]
+  [1m[36mTurmasAluno Load (0.3ms)[0m  [1m[34mSELECT "turmas_alunos".* FROM "turmas_alunos" WHERE "turmas_alunos"."aluno_id" = $1[0m  [["aluno_id", 22]]
+  [1m[36mTurmasAluno Destroy (0.4ms)[0m  [1m[31mDELETE FROM "turmas_alunos" WHERE "turmas_alunos"."id" = $1[0m  [["id", 21]]
+  [1m[36mTemplate Load (0.2ms)[0m  [1m[34mSELECT "templates".* FROM "templates" WHERE "templates"."id_user" = $1[0m  [["id_user", 22]]
+  [1m[36mControleDeEnvio Load (0.2ms)[0m  [1m[34mSELECT "controle_de_envios".* FROM "controle_de_envios" WHERE "controle_de_envios"."aluno_id" = $1[0m  [["aluno_id", 22]]
+  [1m[36mUser Destroy (0.7ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 22]]
+  [1m[36mTRANSACTION (5.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Update All (1.4ms)[0m  [1m[33mUPDATE "turmas" SET "id_docente" = $1 WHERE "turmas"."id_docente" = $2[0m  [["id_docente", nil], ["id_docente", 23]]
+  [1m[36mTurmasAluno Load (0.3ms)[0m  [1m[34mSELECT "turmas_alunos".* FROM "turmas_alunos" WHERE "turmas_alunos"."aluno_id" = $1[0m  [["aluno_id", 23]]
+  [1m[36mTurmasAluno Destroy (0.3ms)[0m  [1m[31mDELETE FROM "turmas_alunos" WHERE "turmas_alunos"."id" = $1[0m  [["id", 22]]
+  [1m[36mTemplate Load (0.3ms)[0m  [1m[34mSELECT "templates".* FROM "templates" WHERE "templates"."id_user" = $1[0m  [["id_user", 23]]
+  [1m[36mControleDeEnvio Load (0.6ms)[0m  [1m[34mSELECT "controle_de_envios".* FROM "controle_de_envios" WHERE "controle_de_envios"."aluno_id" = $1[0m  [["aluno_id", 23]]
+  [1m[36mUser Destroy (0.7ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 23]]
+  [1m[36mTRANSACTION (7.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Update All (1.5ms)[0m  [1m[33mUPDATE "turmas" SET "id_docente" = $1 WHERE "turmas"."id_docente" = $2[0m  [["id_docente", nil], ["id_docente", 24]]
+  [1m[36mTurmasAluno Load (0.3ms)[0m  [1m[34mSELECT "turmas_alunos".* FROM "turmas_alunos" WHERE "turmas_alunos"."aluno_id" = $1[0m  [["aluno_id", 24]]
+  [1m[36mTurmasAluno Destroy (0.5ms)[0m  [1m[31mDELETE FROM "turmas_alunos" WHERE "turmas_alunos"."id" = $1[0m  [["id", 23]]
+  [1m[36mTemplate Load (0.3ms)[0m  [1m[34mSELECT "templates".* FROM "templates" WHERE "templates"."id_user" = $1[0m  [["id_user", 24]]
+  [1m[36mControleDeEnvio Load (0.3ms)[0m  [1m[34mSELECT "controle_de_envios".* FROM "controle_de_envios" WHERE "controle_de_envios"."aluno_id" = $1[0m  [["aluno_id", 24]]
+  [1m[36mUser Destroy (0.5ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 24]]
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Update All (3.4ms)[0m  [1m[33mUPDATE "turmas" SET "id_docente" = $1 WHERE "turmas"."id_docente" = $2[0m  [["id_docente", nil], ["id_docente", 25]]
+  [1m[36mTurmasAluno Load (0.3ms)[0m  [1m[34mSELECT "turmas_alunos".* FROM "turmas_alunos" WHERE "turmas_alunos"."aluno_id" = $1[0m  [["aluno_id", 25]]
+  [1m[36mTurmasAluno Destroy (0.3ms)[0m  [1m[31mDELETE FROM "turmas_alunos" WHERE "turmas_alunos"."id" = $1[0m  [["id", 24]]
+  [1m[36mTemplate Load (0.2ms)[0m  [1m[34mSELECT "templates".* FROM "templates" WHERE "templates"."id_user" = $1[0m  [["id_user", 25]]
+  [1m[36mControleDeEnvio Load (0.2ms)[0m  [1m[34mSELECT "controle_de_envios".* FROM "controle_de_envios" WHERE "controle_de_envios"."aluno_id" = $1[0m  [["aluno_id", 25]]
+  [1m[36mUser Destroy (0.4ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 25]]
+  [1m[36mTRANSACTION (7.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Update All (1.5ms)[0m  [1m[33mUPDATE "turmas" SET "id_docente" = $1 WHERE "turmas"."id_docente" = $2[0m  [["id_docente", nil], ["id_docente", 26]]
+  [1m[36mTurmasAluno Load (0.4ms)[0m  [1m[34mSELECT "turmas_alunos".* FROM "turmas_alunos" WHERE "turmas_alunos"."aluno_id" = $1[0m  [["aluno_id", 26]]
+  [1m[36mTurmasAluno Destroy (0.3ms)[0m  [1m[31mDELETE FROM "turmas_alunos" WHERE "turmas_alunos"."id" = $1[0m  [["id", 25]]
+  [1m[36mTemplate Load (0.2ms)[0m  [1m[34mSELECT "templates".* FROM "templates" WHERE "templates"."id_user" = $1[0m  [["id_user", 26]]
+  [1m[36mControleDeEnvio Load (0.3ms)[0m  [1m[34mSELECT "controle_de_envios".* FROM "controle_de_envios" WHERE "controle_de_envios"."aluno_id" = $1[0m  [["aluno_id", 26]]
+  [1m[36mUser Destroy (0.4ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 26]]
+  [1m[36mTRANSACTION (2.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Update All (1.4ms)[0m  [1m[33mUPDATE "turmas" SET "id_docente" = $1 WHERE "turmas"."id_docente" = $2[0m  [["id_docente", nil], ["id_docente", 27]]
+  [1m[36mTurmasAluno Load (0.3ms)[0m  [1m[34mSELECT "turmas_alunos".* FROM "turmas_alunos" WHERE "turmas_alunos"."aluno_id" = $1[0m  [["aluno_id", 27]]
+  [1m[36mTurmasAluno Destroy (0.3ms)[0m  [1m[31mDELETE FROM "turmas_alunos" WHERE "turmas_alunos"."id" = $1[0m  [["id", 26]]
+  [1m[36mTemplate Load (0.3ms)[0m  [1m[34mSELECT "templates".* FROM "templates" WHERE "templates"."id_user" = $1[0m  [["id_user", 27]]
+  [1m[36mControleDeEnvio Load (0.3ms)[0m  [1m[34mSELECT "controle_de_envios".* FROM "controle_de_envios" WHERE "controle_de_envios"."aluno_id" = $1[0m  [["aluno_id", 27]]
+  [1m[36mUser Destroy (0.5ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 27]]
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Update All (8.0ms)[0m  [1m[33mUPDATE "turmas" SET "id_docente" = $1 WHERE "turmas"."id_docente" = $2[0m  [["id_docente", nil], ["id_docente", 28]]
+  [1m[36mTurmasAluno Load (0.3ms)[0m  [1m[34mSELECT "turmas_alunos".* FROM "turmas_alunos" WHERE "turmas_alunos"."aluno_id" = $1[0m  [["aluno_id", 28]]
+  [1m[36mTurmasAluno Destroy (0.4ms)[0m  [1m[31mDELETE FROM "turmas_alunos" WHERE "turmas_alunos"."id" = $1[0m  [["id", 27]]
+  [1m[36mTemplate Load (0.5ms)[0m  [1m[34mSELECT "templates".* FROM "templates" WHERE "templates"."id_user" = $1[0m  [["id_user", 28]]
+  [1m[36mControleDeEnvio Load (0.2ms)[0m  [1m[34mSELECT "controle_de_envios".* FROM "controle_de_envios" WHERE "controle_de_envios"."aluno_id" = $1[0m  [["aluno_id", 28]]
+  [1m[36mUser Destroy (0.4ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 28]]
+  [1m[36mTRANSACTION (5.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Update All (2.3ms)[0m  [1m[33mUPDATE "turmas" SET "id_docente" = $1 WHERE "turmas"."id_docente" = $2[0m  [["id_docente", nil], ["id_docente", 29]]
+  [1m[36mTurmasAluno Load (0.4ms)[0m  [1m[34mSELECT "turmas_alunos".* FROM "turmas_alunos" WHERE "turmas_alunos"."aluno_id" = $1[0m  [["aluno_id", 29]]
+  [1m[36mTurmasAluno Destroy (0.3ms)[0m  [1m[31mDELETE FROM "turmas_alunos" WHERE "turmas_alunos"."id" = $1[0m  [["id", 28]]
+  [1m[36mTemplate Load (0.2ms)[0m  [1m[34mSELECT "templates".* FROM "templates" WHERE "templates"."id_user" = $1[0m  [["id_user", 29]]
+  [1m[36mControleDeEnvio Load (0.2ms)[0m  [1m[34mSELECT "controle_de_envios".* FROM "controle_de_envios" WHERE "controle_de_envios"."aluno_id" = $1[0m  [["aluno_id", 29]]
+  [1m[36mUser Destroy (0.4ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 29]]
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Update All (4.7ms)[0m  [1m[33mUPDATE "turmas" SET "id_docente" = $1 WHERE "turmas"."id_docente" = $2[0m  [["id_docente", nil], ["id_docente", 30]]
+  [1m[36mTurmasAluno Load (0.3ms)[0m  [1m[34mSELECT "turmas_alunos".* FROM "turmas_alunos" WHERE "turmas_alunos"."aluno_id" = $1[0m  [["aluno_id", 30]]
+  [1m[36mTurmasAluno Destroy (0.3ms)[0m  [1m[31mDELETE FROM "turmas_alunos" WHERE "turmas_alunos"."id" = $1[0m  [["id", 29]]
+  [1m[36mTemplate Load (0.3ms)[0m  [1m[34mSELECT "templates".* FROM "templates" WHERE "templates"."id_user" = $1[0m  [["id_user", 30]]
+  [1m[36mControleDeEnvio Load (0.2ms)[0m  [1m[34mSELECT "controle_de_envios".* FROM "controle_de_envios" WHERE "controle_de_envios"."aluno_id" = $1[0m  [["aluno_id", 30]]
+  [1m[36mUser Destroy (0.5ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 30]]
+  [1m[36mTRANSACTION (4.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Update All (1.3ms)[0m  [1m[33mUPDATE "turmas" SET "id_docente" = $1 WHERE "turmas"."id_docente" = $2[0m  [["id_docente", nil], ["id_docente", 31]]
+  [1m[36mTurmasAluno Load (0.3ms)[0m  [1m[34mSELECT "turmas_alunos".* FROM "turmas_alunos" WHERE "turmas_alunos"."aluno_id" = $1[0m  [["aluno_id", 31]]
+  [1m[36mTurmasAluno Destroy (0.4ms)[0m  [1m[31mDELETE FROM "turmas_alunos" WHERE "turmas_alunos"."id" = $1[0m  [["id", 30]]
+  [1m[36mTemplate Load (0.2ms)[0m  [1m[34mSELECT "templates".* FROM "templates" WHERE "templates"."id_user" = $1[0m  [["id_user", 31]]
+  [1m[36mControleDeEnvio Load (0.2ms)[0m  [1m[34mSELECT "controle_de_envios".* FROM "controle_de_envios" WHERE "controle_de_envios"."aluno_id" = $1[0m  [["aluno_id", 31]]
+  [1m[36mUser Destroy (0.4ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 31]]
+  [1m[36mTRANSACTION (8.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Update All (1.6ms)[0m  [1m[33mUPDATE "turmas" SET "id_docente" = $1 WHERE "turmas"."id_docente" = $2[0m  [["id_docente", nil], ["id_docente", 32]]
+  [1m[36mTurmasAluno Load (0.5ms)[0m  [1m[34mSELECT "turmas_alunos".* FROM "turmas_alunos" WHERE "turmas_alunos"."aluno_id" = $1[0m  [["aluno_id", 32]]
+  [1m[36mTurmasAluno Destroy (0.8ms)[0m  [1m[31mDELETE FROM "turmas_alunos" WHERE "turmas_alunos"."id" = $1[0m  [["id", 31]]
+  [1m[36mTemplate Load (0.4ms)[0m  [1m[34mSELECT "templates".* FROM "templates" WHERE "templates"."id_user" = $1[0m  [["id_user", 32]]
+  [1m[36mControleDeEnvio Load (0.4ms)[0m  [1m[34mSELECT "controle_de_envios".* FROM "controle_de_envios" WHERE "controle_de_envios"."aluno_id" = $1[0m  [["aluno_id", 32]]
+  [1m[36mUser Destroy (0.7ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 32]]
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Update All (3.8ms)[0m  [1m[33mUPDATE "turmas" SET "id_docente" = $1 WHERE "turmas"."id_docente" = $2[0m  [["id_docente", nil], ["id_docente", 33]]
+  [1m[36mTurmasAluno Load (2.4ms)[0m  [1m[34mSELECT "turmas_alunos".* FROM "turmas_alunos" WHERE "turmas_alunos"."aluno_id" = $1[0m  [["aluno_id", 33]]
+  [1m[36mTurmasAluno Destroy (0.9ms)[0m  [1m[31mDELETE FROM "turmas_alunos" WHERE "turmas_alunos"."id" = $1[0m  [["id", 32]]
+  [1m[36mTemplate Load (1.0ms)[0m  [1m[34mSELECT "templates".* FROM "templates" WHERE "templates"."id_user" = $1[0m  [["id_user", 33]]
+  [1m[36mControleDeEnvio Load (0.5ms)[0m  [1m[34mSELECT "controle_de_envios".* FROM "controle_de_envios" WHERE "controle_de_envios"."aluno_id" = $1[0m  [["aluno_id", 33]]
+  [1m[36mUser Destroy (0.6ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 33]]
+  [1m[36mTRANSACTION (8.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Update All (2.0ms)[0m  [1m[33mUPDATE "turmas" SET "id_docente" = $1 WHERE "turmas"."id_docente" = $2[0m  [["id_docente", nil], ["id_docente", 34]]
+  [1m[36mTurmasAluno Load (0.5ms)[0m  [1m[34mSELECT "turmas_alunos".* FROM "turmas_alunos" WHERE "turmas_alunos"."aluno_id" = $1[0m  [["aluno_id", 34]]
+  [1m[36mTurmasAluno Destroy (0.5ms)[0m  [1m[31mDELETE FROM "turmas_alunos" WHERE "turmas_alunos"."id" = $1[0m  [["id", 33]]
+  [1m[36mTemplate Load (1.2ms)[0m  [1m[34mSELECT "templates".* FROM "templates" WHERE "templates"."id_user" = $1[0m  [["id_user", 34]]
+  [1m[36mControleDeEnvio Load (0.5ms)[0m  [1m[34mSELECT "controle_de_envios".* FROM "controle_de_envios" WHERE "controle_de_envios"."aluno_id" = $1[0m  [["aluno_id", 34]]
+  [1m[36mUser Destroy (0.7ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 34]]
+  [1m[36mTRANSACTION (5.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Update All (2.4ms)[0m  [1m[33mUPDATE "turmas" SET "id_docente" = $1 WHERE "turmas"."id_docente" = $2[0m  [["id_docente", nil], ["id_docente", 35]]
+  [1m[36mTurmasAluno Load (1.6ms)[0m  [1m[34mSELECT "turmas_alunos".* FROM "turmas_alunos" WHERE "turmas_alunos"."aluno_id" = $1[0m  [["aluno_id", 35]]
+  [1m[36mTurmasAluno Destroy (0.6ms)[0m  [1m[31mDELETE FROM "turmas_alunos" WHERE "turmas_alunos"."id" = $1[0m  [["id", 34]]
+  [1m[36mTemplate Load (0.4ms)[0m  [1m[34mSELECT "templates".* FROM "templates" WHERE "templates"."id_user" = $1[0m  [["id_user", 35]]
+  [1m[36mControleDeEnvio Load (0.5ms)[0m  [1m[34mSELECT "controle_de_envios".* FROM "controle_de_envios" WHERE "controle_de_envios"."aluno_id" = $1[0m  [["aluno_id", 35]]
+  [1m[36mUser Destroy (1.1ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 35]]
+  [1m[36mTRANSACTION (6.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Update All (3.0ms)[0m  [1m[33mUPDATE "turmas" SET "id_docente" = $1 WHERE "turmas"."id_docente" = $2[0m  [["id_docente", nil], ["id_docente", 36]]
+  [1m[36mTurmasAluno Load (0.6ms)[0m  [1m[34mSELECT "turmas_alunos".* FROM "turmas_alunos" WHERE "turmas_alunos"."aluno_id" = $1[0m  [["aluno_id", 36]]
+  [1m[36mTurmasAluno Destroy (0.8ms)[0m  [1m[31mDELETE FROM "turmas_alunos" WHERE "turmas_alunos"."id" = $1[0m  [["id", 35]]
+  [1m[36mTemplate Load (0.5ms)[0m  [1m[34mSELECT "templates".* FROM "templates" WHERE "templates"."id_user" = $1[0m  [["id_user", 36]]
+  [1m[36mControleDeEnvio Load (0.6ms)[0m  [1m[34mSELECT "controle_de_envios".* FROM "controle_de_envios" WHERE "controle_de_envios"."aluno_id" = $1[0m  [["aluno_id", 36]]
+  [1m[36mUser Destroy (0.8ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 36]]
+  [1m[36mTRANSACTION (4.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Update All (7.2ms)[0m  [1m[33mUPDATE "turmas" SET "id_docente" = $1 WHERE "turmas"."id_docente" = $2[0m  [["id_docente", nil], ["id_docente", 37]]
+  [1m[36mTurmasAluno Load (0.9ms)[0m  [1m[34mSELECT "turmas_alunos".* FROM "turmas_alunos" WHERE "turmas_alunos"."aluno_id" = $1[0m  [["aluno_id", 37]]
+  [1m[36mTurmasAluno Destroy (9.8ms)[0m  [1m[31mDELETE FROM "turmas_alunos" WHERE "turmas_alunos"."id" = $1[0m  [["id", 36]]
+  [1m[36mTemplate Load (0.7ms)[0m  [1m[34mSELECT "templates".* FROM "templates" WHERE "templates"."id_user" = $1[0m  [["id_user", 37]]
+  [1m[36mControleDeEnvio Load (1.1ms)[0m  [1m[34mSELECT "controle_de_envios".* FROM "controle_de_envios" WHERE "controle_de_envios"."aluno_id" = $1[0m  [["aluno_id", 37]]
+  [1m[36mUser Destroy (1.2ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 37]]
+  [1m[36mTRANSACTION (5.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Update All (15.0ms)[0m  [1m[33mUPDATE "turmas" SET "id_docente" = $1 WHERE "turmas"."id_docente" = $2[0m  [["id_docente", nil], ["id_docente", 38]]
+  [1m[36mTurmasAluno Load (1.2ms)[0m  [1m[34mSELECT "turmas_alunos".* FROM "turmas_alunos" WHERE "turmas_alunos"."aluno_id" = $1[0m  [["aluno_id", 38]]
+  [1m[36mTurmasAluno Destroy (1.0ms)[0m  [1m[31mDELETE FROM "turmas_alunos" WHERE "turmas_alunos"."id" = $1[0m  [["id", 37]]
+  [1m[36mTemplate Load (0.7ms)[0m  [1m[34mSELECT "templates".* FROM "templates" WHERE "templates"."id_user" = $1[0m  [["id_user", 38]]
+  [1m[36mControleDeEnvio Load (0.6ms)[0m  [1m[34mSELECT "controle_de_envios".* FROM "controle_de_envios" WHERE "controle_de_envios"."aluno_id" = $1[0m  [["aluno_id", 38]]
+  [1m[36mUser Destroy (1.3ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 38]]
+  [1m[36mTRANSACTION (4.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Update All (3.7ms)[0m  [1m[33mUPDATE "turmas" SET "id_docente" = $1 WHERE "turmas"."id_docente" = $2[0m  [["id_docente", nil], ["id_docente", 39]]
+  [1m[36mTurmasAluno Load (0.9ms)[0m  [1m[34mSELECT "turmas_alunos".* FROM "turmas_alunos" WHERE "turmas_alunos"."aluno_id" = $1[0m  [["aluno_id", 39]]
+  [1m[36mTurmasAluno Destroy (0.7ms)[0m  [1m[31mDELETE FROM "turmas_alunos" WHERE "turmas_alunos"."id" = $1[0m  [["id", 38]]
+  [1m[36mTemplate Load (0.7ms)[0m  [1m[34mSELECT "templates".* FROM "templates" WHERE "templates"."id_user" = $1[0m  [["id_user", 39]]
+  [1m[36mControleDeEnvio Load (1.0ms)[0m  [1m[34mSELECT "controle_de_envios".* FROM "controle_de_envios" WHERE "controle_de_envios"."aluno_id" = $1[0m  [["aluno_id", 39]]
+  [1m[36mUser Destroy (1.2ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 39]]
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Update All (6.8ms)[0m  [1m[33mUPDATE "turmas" SET "id_docente" = $1 WHERE "turmas"."id_docente" = $2[0m  [["id_docente", nil], ["id_docente", 40]]
+  [1m[36mTurmasAluno Load (0.7ms)[0m  [1m[34mSELECT "turmas_alunos".* FROM "turmas_alunos" WHERE "turmas_alunos"."aluno_id" = $1[0m  [["aluno_id", 40]]
+  [1m[36mTurmasAluno Destroy (1.5ms)[0m  [1m[31mDELETE FROM "turmas_alunos" WHERE "turmas_alunos"."id" = $1[0m  [["id", 39]]
+  [1m[36mTemplate Load (2.1ms)[0m  [1m[34mSELECT "templates".* FROM "templates" WHERE "templates"."id_user" = $1[0m  [["id_user", 40]]
+  [1m[36mControleDeEnvio Load (0.7ms)[0m  [1m[34mSELECT "controle_de_envios".* FROM "controle_de_envios" WHERE "controle_de_envios"."aluno_id" = $1[0m  [["aluno_id", 40]]
+  [1m[36mUser Destroy (1.4ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 40]]
+  [1m[36mTRANSACTION (7.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Update All (3.6ms)[0m  [1m[33mUPDATE "turmas" SET "id_docente" = $1 WHERE "turmas"."id_docente" = $2[0m  [["id_docente", nil], ["id_docente", 41]]
+  [1m[36mTurmasAluno Load (3.0ms)[0m  [1m[34mSELECT "turmas_alunos".* FROM "turmas_alunos" WHERE "turmas_alunos"."aluno_id" = $1[0m  [["aluno_id", 41]]
+  [1m[36mTurmasAluno Destroy (1.8ms)[0m  [1m[31mDELETE FROM "turmas_alunos" WHERE "turmas_alunos"."id" = $1[0m  [["id", 40]]
+  [1m[36mTemplate Load (1.6ms)[0m  [1m[34mSELECT "templates".* FROM "templates" WHERE "templates"."id_user" = $1[0m  [["id_user", 41]]
+  [1m[36mControleDeEnvio Load (0.6ms)[0m  [1m[34mSELECT "controle_de_envios".* FROM "controle_de_envios" WHERE "controle_de_envios"."aluno_id" = $1[0m  [["aluno_id", 41]]
+  [1m[36mUser Destroy (1.4ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 41]]
+  [1m[36mTRANSACTION (6.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Update All (5.2ms)[0m  [1m[33mUPDATE "turmas" SET "id_docente" = $1 WHERE "turmas"."id_docente" = $2[0m  [["id_docente", nil], ["id_docente", 42]]
+  [1m[36mTurmasAluno Load (0.8ms)[0m  [1m[34mSELECT "turmas_alunos".* FROM "turmas_alunos" WHERE "turmas_alunos"."aluno_id" = $1[0m  [["aluno_id", 42]]
+  [1m[36mTurmasAluno Destroy (1.4ms)[0m  [1m[31mDELETE FROM "turmas_alunos" WHERE "turmas_alunos"."id" = $1[0m  [["id", 41]]
+  [1m[36mTemplate Load (0.4ms)[0m  [1m[34mSELECT "templates".* FROM "templates" WHERE "templates"."id_user" = $1[0m  [["id_user", 42]]
+  [1m[36mControleDeEnvio Load (0.6ms)[0m  [1m[34mSELECT "controle_de_envios".* FROM "controle_de_envios" WHERE "controle_de_envios"."aluno_id" = $1[0m  [["aluno_id", 42]]
+  [1m[36mUser Destroy (0.6ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 42]]
+  [1m[36mTRANSACTION (4.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Update All (1.7ms)[0m  [1m[33mUPDATE "turmas" SET "id_docente" = $1 WHERE "turmas"."id_docente" = $2[0m  [["id_docente", nil], ["id_docente", 43]]
+  [1m[36mTurmasAluno Load (0.2ms)[0m  [1m[34mSELECT "turmas_alunos".* FROM "turmas_alunos" WHERE "turmas_alunos"."aluno_id" = $1[0m  [["aluno_id", 43]]
+  [1m[36mTurmasAluno Destroy (0.2ms)[0m  [1m[31mDELETE FROM "turmas_alunos" WHERE "turmas_alunos"."id" = $1[0m  [["id", 42]]
+  [1m[36mTemplate Load (0.2ms)[0m  [1m[34mSELECT "templates".* FROM "templates" WHERE "templates"."id_user" = $1[0m  [["id_user", 43]]
+  [1m[36mControleDeEnvio Load (0.5ms)[0m  [1m[34mSELECT "controle_de_envios".* FROM "controle_de_envios" WHERE "controle_de_envios"."aluno_id" = $1[0m  [["aluno_id", 43]]
+  [1m[36mUser Destroy (0.4ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 43]]
+  [1m[36mTRANSACTION (6.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Update All (2.0ms)[0m  [1m[33mUPDATE "turmas" SET "id_docente" = $1 WHERE "turmas"."id_docente" = $2[0m  [["id_docente", nil], ["id_docente", 44]]
+  [1m[36mTurmasAluno Load (0.5ms)[0m  [1m[34mSELECT "turmas_alunos".* FROM "turmas_alunos" WHERE "turmas_alunos"."aluno_id" = $1[0m  [["aluno_id", 44]]
+  [1m[36mTurmasAluno Destroy (0.3ms)[0m  [1m[31mDELETE FROM "turmas_alunos" WHERE "turmas_alunos"."id" = $1[0m  [["id", 43]]
+  [1m[36mTemplate Load (0.1ms)[0m  [1m[34mSELECT "templates".* FROM "templates" WHERE "templates"."id_user" = $1[0m  [["id_user", 44]]
+  [1m[36mControleDeEnvio Load (0.3ms)[0m  [1m[34mSELECT "controle_de_envios".* FROM "controle_de_envios" WHERE "controle_de_envios"."aluno_id" = $1[0m  [["aluno_id", 44]]
+  [1m[36mUser Destroy (0.5ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 44]]
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Update All (1.2ms)[0m  [1m[33mUPDATE "turmas" SET "id_docente" = $1 WHERE "turmas"."id_docente" = $2[0m  [["id_docente", nil], ["id_docente", 45]]
+  [1m[36mTurmasAluno Load (0.5ms)[0m  [1m[34mSELECT "turmas_alunos".* FROM "turmas_alunos" WHERE "turmas_alunos"."aluno_id" = $1[0m  [["aluno_id", 45]]
+  [1m[36mTurmasAluno Destroy (0.6ms)[0m  [1m[31mDELETE FROM "turmas_alunos" WHERE "turmas_alunos"."id" = $1[0m  [["id", 44]]
+  [1m[36mTemplate Load (0.3ms)[0m  [1m[34mSELECT "templates".* FROM "templates" WHERE "templates"."id_user" = $1[0m  [["id_user", 45]]
+  [1m[36mControleDeEnvio Load (0.2ms)[0m  [1m[34mSELECT "controle_de_envios".* FROM "controle_de_envios" WHERE "controle_de_envios"."aluno_id" = $1[0m  [["aluno_id", 45]]
+  [1m[36mUser Destroy (0.4ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 45]]
+  [1m[36mTRANSACTION (6.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTurma Load (2.5ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas"[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurmasAluno Load (0.4ms)[0m  [1m[34mSELECT "turmas_alunos".* FROM "turmas_alunos" WHERE "turmas_alunos"."turma_id" = $1[0m  [["turma_id", 1]]
+  [1m[36mFormulario Load (2.7ms)[0m  [1m[34mSELECT "formularios".* FROM "formularios" WHERE "formularios"."id_turma" = $1[0m  [["id_turma", 1]]
+  [1m[36mTurma Destroy (0.7ms)[0m  [1m[31mDELETE FROM "turmas" WHERE "turmas"."id" = $1[0m  [["id", 1]]
+  [1m[36mTRANSACTION (3.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTurmasAluno Load (0.4ms)[0m  [1m[34mSELECT "turmas_alunos".* FROM "turmas_alunos"[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (5.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (14.8ms)[0m  [1m[32mINSERT INTO "users" ("nome", "curso", "matricula", "usuario", "formacao", "ocupacao", "email", "created_at", "updated_at", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["nome", "Maristela Terto De Holanda"], ["curso", "DEPTO CIÊNCIAS DA COMPUTAÇÃO"], ["matricula", "83807519491"], ["usuario", "83807519491"], ["formacao", "DOUTORADO"], ["ocupacao", "docente"], ["email", "[FILTERED]"], ["created_at", "2025-07-13 21:29:34.443855"], ["updated_at", "2025-07-13 21:29:34.443855"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil]]
+  [1m[36mTRANSACTION (4.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 67], ["LIMIT", 1]]
+  [1m[36mTurma Create (10.0ms)[0m  [1m[32mINSERT INTO "turmas" ("code", "name", "class_data", "id_docente", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["code", "CIC0097"], ["name", "BANCOS DE DADOS"], ["class_data", "{\"classCode\":\"TA\",\"semester\":\"2021.2\",\"time\":\"35T45\"}"], ["id_docente", 67], ["created_at", "2025-07-13 21:29:34.497518"], ["updated_at", "2025-07-13 21:29:34.497518"]]
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (2.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("nome", "curso", "matricula", "usuario", "formacao", "ocupacao", "email", "created_at", "updated_at", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["nome", "Ana Clara Jordao Perna"], ["curso", "CIÊNCIA DA COMPUTAÇÃO/CIC"], ["matricula", "190084006"], ["usuario", "190084006"], ["formacao", "graduando"], ["ocupacao", "dicente"], ["email", "[FILTERED]"], ["created_at", "2025-07-13 21:29:34.735782"], ["updated_at", "2025-07-13 21:29:34.735782"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil]]
+  [1m[36mTRANSACTION (3.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Load (0.3ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 68], ["LIMIT", 1]]
+  [1m[36mTurmasAluno Create (9.3ms)[0m  [1m[32mINSERT INTO "turmas_alunos" ("turma_id", "aluno_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["turma_id", 34], ["aluno_id", 68], ["created_at", "2025-07-13 21:29:34.759682"], ["updated_at", "2025-07-13 21:29:34.759682"]]
+  [1m[36mTRANSACTION (13.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (2.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("nome", "curso", "matricula", "usuario", "formacao", "ocupacao", "email", "created_at", "updated_at", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["nome", "Andre Carvalho De Roure"], ["curso", "CIÊNCIA DA COMPUTAÇÃO/CIC"], ["matricula", "200033522"], ["usuario", "200033522"], ["formacao", "graduando"], ["ocupacao", "dicente"], ["email", "[FILTERED]"], ["created_at", "2025-07-13 21:29:35.004042"], ["updated_at", "2025-07-13 21:29:35.004042"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil]]
+  [1m[36mTRANSACTION (10.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Load (0.3ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 69], ["LIMIT", 1]]
+  [1m[36mTurmasAluno Create (0.5ms)[0m  [1m[32mINSERT INTO "turmas_alunos" ("turma_id", "aluno_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["turma_id", 34], ["aluno_id", 69], ["created_at", "2025-07-13 21:29:35.026188"], ["updated_at", "2025-07-13 21:29:35.026188"]]
+  [1m[36mTRANSACTION (5.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (2.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("nome", "curso", "matricula", "usuario", "formacao", "ocupacao", "email", "created_at", "updated_at", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["nome", "André Carvalho Marques"], ["curso", "CIÊNCIA DA COMPUTAÇÃO/CIC"], ["matricula", "150005491"], ["usuario", "150005491"], ["formacao", "graduando"], ["ocupacao", "dicente"], ["email", "[FILTERED]"], ["created_at", "2025-07-13 21:29:35.303875"], ["updated_at", "2025-07-13 21:29:35.303875"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil]]
+  [1m[36mTRANSACTION (10.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Load (0.4ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 70], ["LIMIT", 1]]
+  [1m[36mTurmasAluno Create (0.6ms)[0m  [1m[32mINSERT INTO "turmas_alunos" ("turma_id", "aluno_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["turma_id", 34], ["aluno_id", 70], ["created_at", "2025-07-13 21:29:35.325186"], ["updated_at", "2025-07-13 21:29:35.325186"]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (2.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("nome", "curso", "matricula", "usuario", "formacao", "ocupacao", "email", "created_at", "updated_at", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["nome", "Antonio Vinicius De Moura Rodrigues"], ["curso", "CIÊNCIA DA COMPUTAÇÃO/CIC"], ["matricula", "190084502"], ["usuario", "190084502"], ["formacao", "graduando"], ["ocupacao", "dicente"], ["email", "[FILTERED]"], ["created_at", "2025-07-13 21:29:35.564542"], ["updated_at", "2025-07-13 21:29:35.564542"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil]]
+  [1m[36mTRANSACTION (10.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Load (0.4ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 71], ["LIMIT", 1]]
+  [1m[36mTurmasAluno Create (0.7ms)[0m  [1m[32mINSERT INTO "turmas_alunos" ("turma_id", "aluno_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["turma_id", 34], ["aluno_id", 71], ["created_at", "2025-07-13 21:29:35.588012"], ["updated_at", "2025-07-13 21:29:35.588012"]]
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (1.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("nome", "curso", "matricula", "usuario", "formacao", "ocupacao", "email", "created_at", "updated_at", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["nome", "Arthur Barreiros De Oliveira Mota"], ["curso", "CIÊNCIA DA COMPUTAÇÃO/CIC"], ["matricula", "190102829"], ["usuario", "190102829"], ["formacao", "graduando"], ["ocupacao", "dicente"], ["email", "[FILTERED]"], ["created_at", "2025-07-13 21:29:35.803295"], ["updated_at", "2025-07-13 21:29:35.803295"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil]]
+  [1m[36mTRANSACTION (8.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Load (0.7ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 72], ["LIMIT", 1]]
+  [1m[36mTurmasAluno Create (0.6ms)[0m  [1m[32mINSERT INTO "turmas_alunos" ("turma_id", "aluno_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["turma_id", 34], ["aluno_id", 72], ["created_at", "2025-07-13 21:29:35.822921"], ["updated_at", "2025-07-13 21:29:35.822921"]]
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (2.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.1ms)[0m  [1m[32mINSERT INTO "users" ("nome", "curso", "matricula", "usuario", "formacao", "ocupacao", "email", "created_at", "updated_at", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["nome", "Arthur Rodrigues Neves"], ["curso", "ENGENHARIA DE COMPUTAÇÃO/CIC"], ["matricula", "202014403"], ["usuario", "202014403"], ["formacao", "graduando"], ["ocupacao", "dicente"], ["email", "[FILTERED]"], ["created_at", "2025-07-13 21:29:36.043450"], ["updated_at", "2025-07-13 21:29:36.043450"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil]]
+  [1m[36mTRANSACTION (7.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Load (0.4ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 73], ["LIMIT", 1]]
+  [1m[36mTurmasAluno Create (1.2ms)[0m  [1m[32mINSERT INTO "turmas_alunos" ("turma_id", "aluno_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["turma_id", 34], ["aluno_id", 73], ["created_at", "2025-07-13 21:29:36.061426"], ["updated_at", "2025-07-13 21:29:36.061426"]]
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (1.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (3.9ms)[0m  [1m[32mINSERT INTO "users" ("nome", "curso", "matricula", "usuario", "formacao", "ocupacao", "email", "created_at", "updated_at", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["nome", "Bianca Glycia Boueri"], ["curso", "ENGENHARIA MECATRÔNICA - CONTROLE E AUTOMAÇÃO/FTD"], ["matricula", "170161561"], ["usuario", "170161561"], ["formacao", "graduando"], ["ocupacao", "dicente"], ["email", "[FILTERED]"], ["created_at", "2025-07-13 21:29:36.350438"], ["updated_at", "2025-07-13 21:29:36.350438"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil]]
+  [1m[36mTRANSACTION (8.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Load (0.6ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 74], ["LIMIT", 1]]
+  [1m[36mTurmasAluno Create (0.7ms)[0m  [1m[32mINSERT INTO "turmas_alunos" ("turma_id", "aluno_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["turma_id", 34], ["aluno_id", 74], ["created_at", "2025-07-13 21:29:36.380921"], ["updated_at", "2025-07-13 21:29:36.380921"]]
+  [1m[36mTRANSACTION (6.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (2.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("nome", "curso", "matricula", "usuario", "formacao", "ocupacao", "email", "created_at", "updated_at", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["nome", "Caio Otávio Peluti Alencar"], ["curso", "CIÊNCIA DA COMPUTAÇÃO/CIC"], ["matricula", "190085312"], ["usuario", "190085312"], ["formacao", "graduando"], ["ocupacao", "dicente"], ["email", "[FILTERED]"], ["created_at", "2025-07-13 21:29:36.619956"], ["updated_at", "2025-07-13 21:29:36.619956"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil]]
+  [1m[36mTRANSACTION (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Load (0.5ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 75], ["LIMIT", 1]]
+  [1m[36mTurmasAluno Create (0.6ms)[0m  [1m[32mINSERT INTO "turmas_alunos" ("turma_id", "aluno_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["turma_id", 34], ["aluno_id", 75], ["created_at", "2025-07-13 21:29:36.638593"], ["updated_at", "2025-07-13 21:29:36.638593"]]
+  [1m[36mTRANSACTION (14.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (2.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("nome", "curso", "matricula", "usuario", "formacao", "ocupacao", "email", "created_at", "updated_at", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["nome", "Camila Frealdo Fraga"], ["curso", "CIÊNCIA DA COMPUTAÇÃO/CIC"], ["matricula", "170007561"], ["usuario", "170007561"], ["formacao", "graduando"], ["ocupacao", "dicente"], ["email", "[FILTERED]"], ["created_at", "2025-07-13 21:29:36.893787"], ["updated_at", "2025-07-13 21:29:36.893787"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil]]
+  [1m[36mTRANSACTION (10.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Load (0.3ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 76], ["LIMIT", 1]]
+  [1m[36mTurmasAluno Create (0.4ms)[0m  [1m[32mINSERT INTO "turmas_alunos" ("turma_id", "aluno_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["turma_id", 34], ["aluno_id", 76], ["created_at", "2025-07-13 21:29:36.912787"], ["updated_at", "2025-07-13 21:29:36.912787"]]
+  [1m[36mTRANSACTION (2.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (3.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("nome", "curso", "matricula", "usuario", "formacao", "ocupacao", "email", "created_at", "updated_at", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["nome", "Claudio Roberto Oliveira Peres De Barros"], ["curso", "CIÊNCIA DA COMPUTAÇÃO/CIC"], ["matricula", "190097591"], ["usuario", "190097591"], ["formacao", "graduando"], ["ocupacao", "dicente"], ["email", "[FILTERED]"], ["created_at", "2025-07-13 21:29:37.213111"], ["updated_at", "2025-07-13 21:29:37.213111"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil]]
+  [1m[36mTRANSACTION (152.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Load (0.6ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 77], ["LIMIT", 1]]
+  [1m[36mTurmasAluno Create (0.8ms)[0m  [1m[32mINSERT INTO "turmas_alunos" ("turma_id", "aluno_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["turma_id", 34], ["aluno_id", 77], ["created_at", "2025-07-13 21:29:37.380585"], ["updated_at", "2025-07-13 21:29:37.380585"]]
+  [1m[36mTRANSACTION (72.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (2.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("nome", "curso", "matricula", "usuario", "formacao", "ocupacao", "email", "created_at", "updated_at", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["nome", "Daltro Oliveira Vinuto"], ["curso", "CIÊNCIA DA COMPUTAÇÃO/CIC"], ["matricula", "160025966"], ["usuario", "160025966"], ["formacao", "graduando"], ["ocupacao", "dicente"], ["email", "[FILTERED]"], ["created_at", "2025-07-13 21:29:37.700167"], ["updated_at", "2025-07-13 21:29:37.700167"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil]]
+  [1m[36mTRANSACTION (127.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Load (0.3ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 78], ["LIMIT", 1]]
+  [1m[36mTurmasAluno Create (0.8ms)[0m  [1m[32mINSERT INTO "turmas_alunos" ("turma_id", "aluno_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["turma_id", 34], ["aluno_id", 78], ["created_at", "2025-07-13 21:29:37.835545"], ["updated_at", "2025-07-13 21:29:37.835545"]]
+  [1m[36mTRANSACTION (60.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (1.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("nome", "curso", "matricula", "usuario", "formacao", "ocupacao", "email", "created_at", "updated_at", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["nome", "Davi De Moura Amaral"], ["curso", "CIÊNCIA DA COMPUTAÇÃO/CIC"], ["matricula", "200016750"], ["usuario", "200016750"], ["formacao", "graduando"], ["ocupacao", "dicente"], ["email", "[FILTERED]"], ["created_at", "2025-07-13 21:29:38.136674"], ["updated_at", "2025-07-13 21:29:38.136674"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil]]
+  [1m[36mTRANSACTION (121.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Load (0.4ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 79], ["LIMIT", 1]]
+  [1m[36mTurmasAluno Create (0.8ms)[0m  [1m[32mINSERT INTO "turmas_alunos" ("turma_id", "aluno_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["turma_id", 34], ["aluno_id", 79], ["created_at", "2025-07-13 21:29:38.268095"], ["updated_at", "2025-07-13 21:29:38.268095"]]
+  [1m[36mTRANSACTION (67.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (2.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("nome", "curso", "matricula", "usuario", "formacao", "ocupacao", "email", "created_at", "updated_at", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["nome", "Eduardo Xavier Dantas"], ["curso", "CIÊNCIA DA COMPUTAÇÃO/CIC"], ["matricula", "190086530"], ["usuario", "190086530"], ["formacao", "graduando"], ["ocupacao", "dicente"], ["email", "[FILTERED]"], ["created_at", "2025-07-13 21:29:38.553337"], ["updated_at", "2025-07-13 21:29:38.553337"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil]]
+  [1m[36mTRANSACTION (128.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Load (0.4ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 80], ["LIMIT", 1]]
+  [1m[36mTurmasAluno Create (0.9ms)[0m  [1m[32mINSERT INTO "turmas_alunos" ("turma_id", "aluno_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["turma_id", 34], ["aluno_id", 80], ["created_at", "2025-07-13 21:29:38.692142"], ["updated_at", "2025-07-13 21:29:38.692142"]]
+  [1m[36mTRANSACTION (64.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (2.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("nome", "curso", "matricula", "usuario", "formacao", "ocupacao", "email", "created_at", "updated_at", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["nome", "Enzo Nunes Leal Sampaio"], ["curso", "CIÊNCIA DA COMPUTAÇÃO/CIC"], ["matricula", "190062789"], ["usuario", "190062789"], ["formacao", "graduando"], ["ocupacao", "dicente"], ["email", "[FILTERED]"], ["created_at", "2025-07-13 21:29:39.041683"], ["updated_at", "2025-07-13 21:29:39.041683"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil]]
+  [1m[36mTRANSACTION (73.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Load (0.3ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 81], ["LIMIT", 1]]
+  [1m[36mTurmasAluno Create (0.5ms)[0m  [1m[32mINSERT INTO "turmas_alunos" ("turma_id", "aluno_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["turma_id", 34], ["aluno_id", 81], ["created_at", "2025-07-13 21:29:39.136168"], ["updated_at", "2025-07-13 21:29:39.136168"]]
+  [1m[36mTRANSACTION (81.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (3.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("nome", "curso", "matricula", "usuario", "formacao", "ocupacao", "email", "created_at", "updated_at", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["nome", "Enzo Yoshio Niho"], ["curso", "CIÊNCIA DA COMPUTAÇÃO/CIC"], ["matricula", "190027304"], ["usuario", "190027304"], ["formacao", "graduando"], ["ocupacao", "dicente"], ["email", "[FILTERED]"], ["created_at", "2025-07-13 21:29:39.456250"], ["updated_at", "2025-07-13 21:29:39.456250"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil]]
+  [1m[36mTRANSACTION (237.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Load (0.5ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 82], ["LIMIT", 1]]
+  [1m[36mTurmasAluno Create (0.8ms)[0m  [1m[32mINSERT INTO "turmas_alunos" ("turma_id", "aluno_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["turma_id", 34], ["aluno_id", 82], ["created_at", "2025-07-13 21:29:39.715974"], ["updated_at", "2025-07-13 21:29:39.715974"]]
+  [1m[36mTRANSACTION (76.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (1.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("nome", "curso", "matricula", "usuario", "formacao", "ocupacao", "email", "created_at", "updated_at", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["nome", "Gabriel Faustino Lima Da Rocha"], ["curso", "CIÊNCIA DA COMPUTAÇÃO/CIC"], ["matricula", "190013249"], ["usuario", "190013249"], ["formacao", "graduando"], ["ocupacao", "dicente"], ["email", "[FILTERED]"], ["created_at", "2025-07-13 21:29:40.016024"], ["updated_at", "2025-07-13 21:29:40.016024"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil]]
+  [1m[36mTRANSACTION (141.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Load (0.6ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 83], ["LIMIT", 1]]
+  [1m[36mTurmasAluno Create (0.5ms)[0m  [1m[32mINSERT INTO "turmas_alunos" ("turma_id", "aluno_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["turma_id", 34], ["aluno_id", 83], ["created_at", "2025-07-13 21:29:40.168990"], ["updated_at", "2025-07-13 21:29:40.168990"]]
+  [1m[36mTRANSACTION (112.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (2.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("nome", "curso", "matricula", "usuario", "formacao", "ocupacao", "email", "created_at", "updated_at", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["nome", "Gabriel Ligoski"], ["curso", "CIÊNCIA DA COMPUTAÇÃO/CIC"], ["matricula", "190087498"], ["usuario", "190087498"], ["formacao", "graduando"], ["ocupacao", "dicente"], ["email", "[FILTERED]"], ["created_at", "2025-07-13 21:29:40.538147"], ["updated_at", "2025-07-13 21:29:40.538147"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil]]
+  [1m[36mTRANSACTION (9.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Load (0.4ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 84], ["LIMIT", 1]]
+  [1m[36mTurmasAluno Create (0.6ms)[0m  [1m[32mINSERT INTO "turmas_alunos" ("turma_id", "aluno_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["turma_id", 34], ["aluno_id", 84], ["created_at", "2025-07-13 21:29:40.573417"], ["updated_at", "2025-07-13 21:29:40.573417"]]
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (14.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (10.0ms)[0m  [1m[32mINSERT INTO "users" ("nome", "curso", "matricula", "usuario", "formacao", "ocupacao", "email", "created_at", "updated_at", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["nome", "Gabriel Mendes Ciriatico Guimarães"], ["curso", "CIÊNCIA DA COMPUTAÇÃO/CIC"], ["matricula", "202033202"], ["usuario", "202033202"], ["formacao", "graduando"], ["ocupacao", "dicente"], ["email", "[FILTERED]"], ["created_at", "2025-07-13 21:29:40.979460"], ["updated_at", "2025-07-13 21:29:40.979460"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil]]
+  [1m[36mTRANSACTION (7.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Load (0.8ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 85], ["LIMIT", 1]]
+  [1m[36mTurmasAluno Create (1.2ms)[0m  [1m[32mINSERT INTO "turmas_alunos" ("turma_id", "aluno_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["turma_id", 34], ["aluno_id", 85], ["created_at", "2025-07-13 21:29:41.023392"], ["updated_at", "2025-07-13 21:29:41.023392"]]
+  [1m[36mTRANSACTION (5.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (6.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.0ms)[0m  [1m[32mINSERT INTO "users" ("nome", "curso", "matricula", "usuario", "formacao", "ocupacao", "email", "created_at", "updated_at", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["nome", "Gustavo Rodrigues Dos Santos"], ["curso", "CIÊNCIA DA COMPUTAÇÃO/CIC"], ["matricula", "190014121"], ["usuario", "190014121"], ["formacao", "graduando"], ["ocupacao", "dicente"], ["email", "[FILTERED]"], ["created_at", "2025-07-13 21:29:41.347236"], ["updated_at", "2025-07-13 21:29:41.347236"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil]]
+  [1m[36mTRANSACTION (15.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Load (1.5ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 86], ["LIMIT", 1]]
+  [1m[36mTurmasAluno Create (1.0ms)[0m  [1m[32mINSERT INTO "turmas_alunos" ("turma_id", "aluno_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["turma_id", 34], ["aluno_id", 86], ["created_at", "2025-07-13 21:29:41.382609"], ["updated_at", "2025-07-13 21:29:41.382609"]]
+  [1m[36mTRANSACTION (8.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (4.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("nome", "curso", "matricula", "usuario", "formacao", "ocupacao", "email", "created_at", "updated_at", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["nome", "Gustavo Rodrigues Gualberto"], ["curso", "CIÊNCIA DA COMPUTAÇÃO/CIC"], ["matricula", "190108266"], ["usuario", "190108266"], ["formacao", "graduando"], ["ocupacao", "dicente"], ["email", "[FILTERED]"], ["created_at", "2025-07-13 21:29:41.690767"], ["updated_at", "2025-07-13 21:29:41.690767"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil]]
+  [1m[36mTRANSACTION (13.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Load (0.6ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 87], ["LIMIT", 1]]
+  [1m[36mTurmasAluno Create (0.6ms)[0m  [1m[32mINSERT INTO "turmas_alunos" ("turma_id", "aluno_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["turma_id", 34], ["aluno_id", 87], ["created_at", "2025-07-13 21:29:41.718320"], ["updated_at", "2025-07-13 21:29:41.718320"]]
+  [1m[36mTRANSACTION (8.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (8.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.3ms)[0m  [1m[32mINSERT INTO "users" ("nome", "curso", "matricula", "usuario", "formacao", "ocupacao", "email", "created_at", "updated_at", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["nome", "Igor David Morais"], ["curso", "ENGENHARIA MECATRÔNICA - CONTROLE E AUTOMAÇÃO/FTD"], ["matricula", "180102141"], ["usuario", "180102141"], ["formacao", "graduando"], ["ocupacao", "dicente"], ["email", "[FILTERED]"], ["created_at", "2025-07-13 21:29:42.011524"], ["updated_at", "2025-07-13 21:29:42.011524"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil]]
+  [1m[36mTRANSACTION (18.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Load (0.4ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 88], ["LIMIT", 1]]
+  [1m[36mTurmasAluno Create (0.6ms)[0m  [1m[32mINSERT INTO "turmas_alunos" ("turma_id", "aluno_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["turma_id", 34], ["aluno_id", 88], ["created_at", "2025-07-13 21:29:42.047668"], ["updated_at", "2025-07-13 21:29:42.047668"]]
+  [1m[36mTRANSACTION (5.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (9.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("nome", "curso", "matricula", "usuario", "formacao", "ocupacao", "email", "created_at", "updated_at", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["nome", "Jefte Augusto Gomes Batista"], ["curso", "CIÊNCIA DA COMPUTAÇÃO/CIC"], ["matricula", "180057570"], ["usuario", "180057570"], ["formacao", "graduando"], ["ocupacao", "dicente"], ["email", "[FILTERED]"], ["created_at", "2025-07-13 21:29:45.283101"], ["updated_at", "2025-07-13 21:29:45.283101"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil]]
+  [1m[36mTRANSACTION (3.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Load (0.5ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 89], ["LIMIT", 1]]
+  [1m[36mTurmasAluno Create (0.8ms)[0m  [1m[32mINSERT INTO "turmas_alunos" ("turma_id", "aluno_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["turma_id", 34], ["aluno_id", 89], ["created_at", "2025-07-13 21:29:45.302217"], ["updated_at", "2025-07-13 21:29:45.302217"]]
+  [1m[36mTRANSACTION (5.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (3.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("nome", "curso", "matricula", "usuario", "formacao", "ocupacao", "email", "created_at", "updated_at", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["nome", "Karolina De Souza Silva"], ["curso", "ENGENHARIA DE COMPUTAÇÃO/CIC"], ["matricula", "190046791"], ["usuario", "190046791"], ["formacao", "graduando"], ["ocupacao", "dicente"], ["email", "[FILTERED]"], ["created_at", "2025-07-13 21:29:45.646513"], ["updated_at", "2025-07-13 21:29:45.646513"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil]]
+  [1m[36mTRANSACTION (3.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Load (0.6ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 90], ["LIMIT", 1]]
+  [1m[36mTurmasAluno Create (0.9ms)[0m  [1m[32mINSERT INTO "turmas_alunos" ("turma_id", "aluno_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["turma_id", 34], ["aluno_id", 90], ["created_at", "2025-07-13 21:29:45.665451"], ["updated_at", "2025-07-13 21:29:45.665451"]]
+  [1m[36mTRANSACTION (5.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (2.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("nome", "curso", "matricula", "usuario", "formacao", "ocupacao", "email", "created_at", "updated_at", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["nome", "Kléber Rodrigues Da Costa Júnior"], ["curso", "CIÊNCIA DA COMPUTAÇÃO/CIC"], ["matricula", "200053680"], ["usuario", "200053680"], ["formacao", "graduando"], ["ocupacao", "dicente"], ["email", "[FILTERED]"], ["created_at", "2025-07-13 21:29:45.980138"], ["updated_at", "2025-07-13 21:29:45.980138"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil]]
+  [1m[36mTRANSACTION (2.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Load (0.4ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 91], ["LIMIT", 1]]
+  [1m[36mTurmasAluno Create (0.6ms)[0m  [1m[32mINSERT INTO "turmas_alunos" ("turma_id", "aluno_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["turma_id", 34], ["aluno_id", 91], ["created_at", "2025-07-13 21:29:45.992806"], ["updated_at", "2025-07-13 21:29:45.992806"]]
+  [1m[36mTRANSACTION (4.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (3.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("nome", "curso", "matricula", "usuario", "formacao", "ocupacao", "email", "created_at", "updated_at", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["nome", "Luca Delpino Barbabella"], ["curso", "CIÊNCIA DA COMPUTAÇÃO/CIC"], ["matricula", "180125559"], ["usuario", "180125559"], ["formacao", "graduando"], ["ocupacao", "dicente"], ["email", "[FILTERED]"], ["created_at", "2025-07-13 21:29:46.275643"], ["updated_at", "2025-07-13 21:29:46.275643"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil]]
+  [1m[36mTRANSACTION (5.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Load (0.5ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 92], ["LIMIT", 1]]
+  [1m[36mTurmasAluno Create (1.1ms)[0m  [1m[32mINSERT INTO "turmas_alunos" ("turma_id", "aluno_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["turma_id", 34], ["aluno_id", 92], ["created_at", "2025-07-13 21:29:46.293488"], ["updated_at", "2025-07-13 21:29:46.293488"]]
+  [1m[36mTRANSACTION (3.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (2.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("nome", "curso", "matricula", "usuario", "formacao", "ocupacao", "email", "created_at", "updated_at", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["nome", "Lucas De Almeida Abreu Faria"], ["curso", "CIÊNCIA DA COMPUTAÇÃO/CIC"], ["matricula", "170016668"], ["usuario", "170016668"], ["formacao", "graduando"], ["ocupacao", "dicente"], ["email", "[FILTERED]"], ["created_at", "2025-07-13 21:29:46.597283"], ["updated_at", "2025-07-13 21:29:46.597283"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Load (0.4ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 93], ["LIMIT", 1]]
+  [1m[36mTurmasAluno Create (0.5ms)[0m  [1m[32mINSERT INTO "turmas_alunos" ("turma_id", "aluno_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["turma_id", 34], ["aluno_id", 93], ["created_at", "2025-07-13 21:29:46.615740"], ["updated_at", "2025-07-13 21:29:46.615740"]]
+  [1m[36mTRANSACTION (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (4.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("nome", "curso", "matricula", "usuario", "formacao", "ocupacao", "email", "created_at", "updated_at", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["nome", "Lucas Gonçalves Ramalho"], ["curso", "CIÊNCIA DA COMPUTAÇÃO/CIC"], ["matricula", "190098091"], ["usuario", "190098091"], ["formacao", "graduando"], ["ocupacao", "dicente"], ["email", "[FILTERED]"], ["created_at", "2025-07-13 21:29:46.903345"], ["updated_at", "2025-07-13 21:29:46.903345"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil]]
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Load (0.5ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 94], ["LIMIT", 1]]
+  [1m[36mTurmasAluno Create (1.3ms)[0m  [1m[32mINSERT INTO "turmas_alunos" ("turma_id", "aluno_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["turma_id", 34], ["aluno_id", 94], ["created_at", "2025-07-13 21:29:46.918650"], ["updated_at", "2025-07-13 21:29:46.918650"]]
+  [1m[36mTRANSACTION (3.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (3.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("nome", "curso", "matricula", "usuario", "formacao", "ocupacao", "email", "created_at", "updated_at", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["nome", "Lucas Monteiro Miranda"], ["curso", "ENGENHARIA MECATRÔNICA - CONTROLE E AUTOMAÇÃO/FTD"], ["matricula", "170149684"], ["usuario", "170149684"], ["formacao", "graduando"], ["ocupacao", "dicente"], ["email", "[FILTERED]"], ["created_at", "2025-07-13 21:29:47.202349"], ["updated_at", "2025-07-13 21:29:47.202349"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil]]
+  [1m[36mTRANSACTION (4.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Load (0.4ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 95], ["LIMIT", 1]]
+  [1m[36mTurmasAluno Create (0.6ms)[0m  [1m[32mINSERT INTO "turmas_alunos" ("turma_id", "aluno_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["turma_id", 34], ["aluno_id", 95], ["created_at", "2025-07-13 21:29:47.220246"], ["updated_at", "2025-07-13 21:29:47.220246"]]
+  [1m[36mTRANSACTION (2.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (2.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("nome", "curso", "matricula", "usuario", "formacao", "ocupacao", "email", "created_at", "updated_at", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["nome", "Lucas Resende Silveira Reis"], ["curso", "CIÊNCIA DA COMPUTAÇÃO/CIC"], ["matricula", "180144421"], ["usuario", "180144421"], ["formacao", "graduando"], ["ocupacao", "dicente"], ["email", "[FILTERED]"], ["created_at", "2025-07-13 21:29:47.533969"], ["updated_at", "2025-07-13 21:29:47.533969"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil]]
+  [1m[36mTRANSACTION (6.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Load (0.4ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 96], ["LIMIT", 1]]
+  [1m[36mTurmasAluno Create (0.8ms)[0m  [1m[32mINSERT INTO "turmas_alunos" ("turma_id", "aluno_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["turma_id", 34], ["aluno_id", 96], ["created_at", "2025-07-13 21:29:47.551673"], ["updated_at", "2025-07-13 21:29:47.551673"]]
+  [1m[36mTRANSACTION (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (2.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("nome", "curso", "matricula", "usuario", "formacao", "ocupacao", "email", "created_at", "updated_at", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["nome", "Luis Fernando Freitas Lamellas"], ["curso", "CIÊNCIA DA COMPUTAÇÃO/CIC"], ["matricula", "190016841"], ["usuario", "190016841"], ["formacao", "graduando"], ["ocupacao", "dicente"], ["email", "[FILTERED]"], ["created_at", "2025-07-13 21:29:47.835327"], ["updated_at", "2025-07-13 21:29:47.835327"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil]]
+  [1m[36mTRANSACTION (4.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Load (0.3ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+  [1m[36mTurmasAluno Create (0.5ms)[0m  [1m[32mINSERT INTO "turmas_alunos" ("turma_id", "aluno_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["turma_id", 34], ["aluno_id", 97], ["created_at", "2025-07-13 21:29:47.849425"], ["updated_at", "2025-07-13 21:29:47.849425"]]
+  [1m[36mTRANSACTION (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (19.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.1ms)[0m  [1m[32mINSERT INTO "users" ("nome", "curso", "matricula", "usuario", "formacao", "ocupacao", "email", "created_at", "updated_at", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["nome", "Luiza De Araujo Nunes Gomes"], ["curso", "CIÊNCIA DA COMPUTAÇÃO/CIC"], ["matricula", "190112794"], ["usuario", "190112794"], ["formacao", "graduando"], ["ocupacao", "dicente"], ["email", "[FILTERED]"], ["created_at", "2025-07-13 21:29:48.203631"], ["updated_at", "2025-07-13 21:29:48.203631"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil]]
+  [1m[36mTRANSACTION (7.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Load (0.8ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[36mUser Load (2.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 98], ["LIMIT", 1]]
+  [1m[36mTurmasAluno Create (1.3ms)[0m  [1m[32mINSERT INTO "turmas_alunos" ("turma_id", "aluno_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["turma_id", 34], ["aluno_id", 98], ["created_at", "2025-07-13 21:29:48.258808"], ["updated_at", "2025-07-13 21:29:48.258808"]]
+  [1m[36mTRANSACTION (5.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (4.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (17.5ms)[0m  [1m[32mINSERT INTO "users" ("nome", "curso", "matricula", "usuario", "formacao", "ocupacao", "email", "created_at", "updated_at", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["nome", "Marcelo Aiache Postiglione"], ["curso", "CIÊNCIA DA COMPUTAÇÃO/CIC"], ["matricula", "180126652"], ["usuario", "180126652"], ["formacao", "graduando"], ["ocupacao", "dicente"], ["email", "[FILTERED]"], ["created_at", "2025-07-13 21:29:48.628518"], ["updated_at", "2025-07-13 21:29:48.628518"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil]]
+  [1m[36mTRANSACTION (21.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Load (0.5ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 99], ["LIMIT", 1]]
+  [1m[36mTurmasAluno Create (0.9ms)[0m  [1m[32mINSERT INTO "turmas_alunos" ("turma_id", "aluno_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["turma_id", 34], ["aluno_id", 99], ["created_at", "2025-07-13 21:29:48.684633"], ["updated_at", "2025-07-13 21:29:48.684633"]]
+  [1m[36mTRANSACTION (4.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (2.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("nome", "curso", "matricula", "usuario", "formacao", "ocupacao", "email", "created_at", "updated_at", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["nome", "Marcelo Junqueira Ferreira"], ["curso", "CIÊNCIA DA COMPUTAÇÃO/CIC"], ["matricula", "200023624"], ["usuario", "200023624"], ["formacao", "graduando"], ["ocupacao", "dicente"], ["email", "[FILTERED]"], ["created_at", "2025-07-13 21:29:49.038139"], ["updated_at", "2025-07-13 21:29:49.038139"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil]]
+  [1m[36mTRANSACTION (3.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Load (1.1ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 100], ["LIMIT", 1]]
+  [1m[36mTurmasAluno Create (1.1ms)[0m  [1m[32mINSERT INTO "turmas_alunos" ("turma_id", "aluno_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["turma_id", 34], ["aluno_id", 100], ["created_at", "2025-07-13 21:29:49.054678"], ["updated_at", "2025-07-13 21:29:49.054678"]]
+  [1m[36mTRANSACTION (7.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (5.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("nome", "curso", "matricula", "usuario", "formacao", "ocupacao", "email", "created_at", "updated_at", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["nome", "Maria Eduarda Carvalho Santos"], ["curso", "CIÊNCIA DA COMPUTAÇÃO/CIC"], ["matricula", "190092556"], ["usuario", "190092556"], ["formacao", "graduando"], ["ocupacao", "dicente"], ["email", "[FILTERED]"], ["created_at", "2025-07-13 21:29:49.447410"], ["updated_at", "2025-07-13 21:29:49.447410"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil]]
+  [1m[36mTRANSACTION (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Load (0.4ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 101], ["LIMIT", 1]]
+  [1m[36mTurmasAluno Create (0.9ms)[0m  [1m[32mINSERT INTO "turmas_alunos" ("turma_id", "aluno_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["turma_id", 34], ["aluno_id", 101], ["created_at", "2025-07-13 21:29:49.461549"], ["updated_at", "2025-07-13 21:29:49.461549"]]
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (2.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("nome", "curso", "matricula", "usuario", "formacao", "ocupacao", "email", "created_at", "updated_at", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["nome", "Maria Eduarda Lacerda Dantas"], ["curso", "CIÊNCIA DA COMPUTAÇÃO/CIC"], ["matricula", "200067184"], ["usuario", "200067184"], ["formacao", "graduando"], ["ocupacao", "dicente"], ["email", "[FILTERED]"], ["created_at", "2025-07-13 21:29:49.794532"], ["updated_at", "2025-07-13 21:29:49.794532"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil]]
+  [1m[36mTRANSACTION (6.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Load (1.2ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 102], ["LIMIT", 1]]
+  [1m[36mTurmasAluno Create (0.8ms)[0m  [1m[32mINSERT INTO "turmas_alunos" ("turma_id", "aluno_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["turma_id", 34], ["aluno_id", 102], ["created_at", "2025-07-13 21:29:49.821856"], ["updated_at", "2025-07-13 21:29:49.821856"]]
+  [1m[36mTRANSACTION (3.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (6.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("nome", "curso", "matricula", "usuario", "formacao", "ocupacao", "email", "created_at", "updated_at", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["nome", "Maylla Krislainy De Sousa Silva"], ["curso", "CIÊNCIA DA COMPUTAÇÃO/CIC"], ["matricula", "190043873"], ["usuario", "190043873"], ["formacao", "graduando"], ["ocupacao", "dicente"], ["email", "[FILTERED]"], ["created_at", "2025-07-13 21:29:50.128560"], ["updated_at", "2025-07-13 21:29:50.128560"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil]]
+  [1m[36mTRANSACTION (6.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Load (0.8ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 103], ["LIMIT", 1]]
+  [1m[36mTurmasAluno Create (1.0ms)[0m  [1m[32mINSERT INTO "turmas_alunos" ("turma_id", "aluno_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["turma_id", 34], ["aluno_id", 103], ["created_at", "2025-07-13 21:29:50.152960"], ["updated_at", "2025-07-13 21:29:50.152960"]]
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (2.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("nome", "curso", "matricula", "usuario", "formacao", "ocupacao", "email", "created_at", "updated_at", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["nome", "Pedro Cesar Ribeiro Passos"], ["curso", "ENGENHARIA MECATRÔNICA - CONTROLE E AUTOMAÇÃO/FTD"], ["matricula", "180139312"], ["usuario", "180139312"], ["formacao", "graduando"], ["ocupacao", "dicente"], ["email", "[FILTERED]"], ["created_at", "2025-07-13 21:29:50.448558"], ["updated_at", "2025-07-13 21:29:50.448558"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil]]
+  [1m[36mTRANSACTION (5.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Load (1.6ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 104], ["LIMIT", 1]]
+  [1m[36mTurmasAluno Create (0.8ms)[0m  [1m[32mINSERT INTO "turmas_alunos" ("turma_id", "aluno_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["turma_id", 34], ["aluno_id", 104], ["created_at", "2025-07-13 21:29:50.472710"], ["updated_at", "2025-07-13 21:29:50.472710"]]
+  [1m[36mTRANSACTION (2.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (5.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("nome", "curso", "matricula", "usuario", "formacao", "ocupacao", "email", "created_at", "updated_at", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["nome", "Rafael Mascarenhas Dal Moro"], ["curso", "ENGENHARIA DE COMPUTAÇÃO/CIC"], ["matricula", "170021041"], ["usuario", "170021041"], ["formacao", "graduando"], ["ocupacao", "dicente"], ["email", "[FILTERED]"], ["created_at", "2025-07-13 21:29:50.756070"], ["updated_at", "2025-07-13 21:29:50.756070"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil]]
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Load (0.4ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 105], ["LIMIT", 1]]
+  [1m[36mTurmasAluno Create (0.8ms)[0m  [1m[32mINSERT INTO "turmas_alunos" ("turma_id", "aluno_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["turma_id", 34], ["aluno_id", 105], ["created_at", "2025-07-13 21:29:50.770548"], ["updated_at", "2025-07-13 21:29:50.770548"]]
+  [1m[36mTRANSACTION (2.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (5.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (10.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.9ms)[0m  [1m[32mINSERT INTO "users" ("nome", "curso", "matricula", "usuario", "formacao", "ocupacao", "email", "created_at", "updated_at", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["nome", "Rodrigo Mamedio Arrelaro"], ["curso", "CIÊNCIA DA COMPUTAÇÃO/CIC"], ["matricula", "190095164"], ["usuario", "190095164"], ["formacao", "graduando"], ["ocupacao", "dicente"], ["email", "[FILTERED]"], ["created_at", "2025-07-13 21:29:51.149593"], ["updated_at", "2025-07-13 21:29:51.149593"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil]]
+  [1m[36mTRANSACTION (5.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Load (0.8ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 106], ["LIMIT", 1]]
+  [1m[36mTurmasAluno Create (1.6ms)[0m  [1m[32mINSERT INTO "turmas_alunos" ("turma_id", "aluno_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["turma_id", 34], ["aluno_id", 106], ["created_at", "2025-07-13 21:29:51.174632"], ["updated_at", "2025-07-13 21:29:51.174632"]]
+  [1m[36mTRANSACTION (3.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (7.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.2ms)[0m  [1m[32mINSERT INTO "users" ("nome", "curso", "matricula", "usuario", "formacao", "ocupacao", "email", "created_at", "updated_at", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["nome", "Thiago De Oliveira Albuquerque"], ["curso", "ENGENHARIA DE COMPUTAÇÃO/CIC"], ["matricula", "140177442"], ["usuario", "140177442"], ["formacao", "graduando"], ["ocupacao", "dicente"], ["email", "[FILTERED]"], ["created_at", "2025-07-13 21:29:51.558450"], ["updated_at", "2025-07-13 21:29:51.558450"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil]]
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Load (0.6ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 107], ["LIMIT", 1]]
+  [1m[36mTurmasAluno Create (1.1ms)[0m  [1m[32mINSERT INTO "turmas_alunos" ("turma_id", "aluno_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["turma_id", 34], ["aluno_id", 107], ["created_at", "2025-07-13 21:29:51.584734"], ["updated_at", "2025-07-13 21:29:51.584734"]]
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (5.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("nome", "curso", "matricula", "usuario", "formacao", "ocupacao", "email", "created_at", "updated_at", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["nome", "Thiago Elias Dos Reis"], ["curso", "CIÊNCIA DA COMPUTAÇÃO/CIC"], ["matricula", "190126892"], ["usuario", "190126892"], ["formacao", "graduando"], ["ocupacao", "dicente"], ["email", "[FILTERED]"], ["created_at", "2025-07-13 21:29:51.894541"], ["updated_at", "2025-07-13 21:29:51.894541"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil]]
+  [1m[36mTRANSACTION (5.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Load (0.4ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 108], ["LIMIT", 1]]
+  [1m[36mTurmasAluno Create (1.1ms)[0m  [1m[32mINSERT INTO "turmas_alunos" ("turma_id", "aluno_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["turma_id", 34], ["aluno_id", 108], ["created_at", "2025-07-13 21:29:51.909433"], ["updated_at", "2025-07-13 21:29:51.909433"]]
+  [1m[36mTRANSACTION (3.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (2.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("nome", "curso", "matricula", "usuario", "formacao", "ocupacao", "email", "created_at", "updated_at", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["nome", "Victor Hugo Rodrigues Fernandes"], ["curso", "CIÊNCIA DA COMPUTAÇÃO/CIC"], ["matricula", "180132041"], ["usuario", "180132041"], ["formacao", "graduando"], ["ocupacao", "dicente"], ["email", "[FILTERED]"], ["created_at", "2025-07-13 21:29:52.233064"], ["updated_at", "2025-07-13 21:29:52.233064"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil]]
+  [1m[36mTRANSACTION (5.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Load (0.4ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 109], ["LIMIT", 1]]
+  [1m[36mTurmasAluno Create (0.5ms)[0m  [1m[32mINSERT INTO "turmas_alunos" ("turma_id", "aluno_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["turma_id", 34], ["aluno_id", 109], ["created_at", "2025-07-13 21:29:52.250420"], ["updated_at", "2025-07-13 21:29:52.250420"]]
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (2.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("nome", "curso", "matricula", "usuario", "formacao", "ocupacao", "email", "created_at", "updated_at", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["nome", "Vinicius Lima Passos"], ["curso", "CIÊNCIA DA COMPUTAÇÃO/CIC"], ["matricula", "200028545"], ["usuario", "200028545"], ["formacao", "graduando"], ["ocupacao", "dicente"], ["email", "[FILTERED]"], ["created_at", "2025-07-13 21:29:52.521923"], ["updated_at", "2025-07-13 21:29:52.521923"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil]]
+  [1m[36mTRANSACTION (3.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Load (0.4ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 110], ["LIMIT", 1]]
+  [1m[36mTurmasAluno Create (0.6ms)[0m  [1m[32mINSERT INTO "turmas_alunos" ("turma_id", "aluno_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["turma_id", 34], ["aluno_id", 110], ["created_at", "2025-07-13 21:29:52.533352"], ["updated_at", "2025-07-13 21:29:52.533352"]]
+  [1m[36mTRANSACTION (4.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (2.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("nome", "curso", "matricula", "usuario", "formacao", "ocupacao", "email", "created_at", "updated_at", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["nome", "William Xavier Dos Santos"], ["curso", "CIÊNCIA DA COMPUTAÇÃO/CIC"], ["matricula", "190075384"], ["usuario", "190075384"], ["formacao", "graduando"], ["ocupacao", "dicente"], ["email", "[FILTERED]"], ["created_at", "2025-07-13 21:29:52.786471"], ["updated_at", "2025-07-13 21:29:52.786471"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil]]
+  [1m[36mTRANSACTION (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTurma Load (1.1ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 111], ["LIMIT", 1]]
+  [1m[36mTurmasAluno Create (0.8ms)[0m  [1m[32mINSERT INTO "turmas_alunos" ("turma_id", "aluno_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["turma_id", 34], ["aluno_id", 111], ["created_at", "2025-07-13 21:29:52.806577"], ["updated_at", "2025-07-13 21:29:52.806577"]]
+  [1m[36mTRANSACTION (2.4ms)[0m  [1m[35mCOMMIT[0m
+[dotenv] Set [36mDB_USERNAME[0m and [36mDB_PASSWORD[0m
+[dotenv] Loaded [33m.env[0m

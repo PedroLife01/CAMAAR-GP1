@@ -1,25 +1,14 @@
 # features/step_definitions/atualizar_sigaa_steps.rb
 
-Given('estou autenticado como {string}') do |_papel|
-  pending 'login admin'
-end
-
 Given('o serviço do SIGAA está fora do ar') do
-  pending 'mock de indisponibilidade'
+  stub_request(:get, "api.sigaa.com.br/dados").to_return(status: 503)
+  puts "Atenção: O mock para 'serviço fora do ar' precisa ser implementado."
 end
 
-When('clico em {string}') do |_botao|
-  pending 'clicar no botão de sincronização'
-end
-
-Then('o job {string} deve ter sido enfileirado') do |_job|
-  pending 'verificar job enfileirado'
+Then('o job {string} deve ter sido enfileirado') do |job_name|
+  expect(job_name.constantize).to have_been_enqueued
 end
 
 Then('nenhum job deve ser enfileirado') do
-  pending 'verificar fila vazia'
-end
-
-Then('devo ver a mensagem {string}') do |_mensagem|
-  pending 'mensagem na tela'
+  expect(ActiveJob::Base.queue_adapter.enqueued_jobs).to be_empty
 end
