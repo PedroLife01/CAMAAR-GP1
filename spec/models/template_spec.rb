@@ -7,17 +7,10 @@ RSpec.describe Template, type: :model do
   end
 
   describe 'dependent destroy' do
-    let(:user) { User.create!(email: 'test@example.com', password: 'password') }
-    let(:template) { Template.create!(user: user) }
-    let(:turma) { Turma.create!(id_docente: user.id) }
-
     it 'destroys associated formularios when template is destroyed' do
-      formulario = Formulario.create!(
-        id_template: template.id,
-        turma: turma,
-        id_docente: user.id
-      )
-      expect { template.destroy }.to change { Formulario.count }.by(-1)
+      template = create(:template)
+      formulario = create(:formulario, template: template)
+      expect { template.destroy }.to change(Formulario, :count).by(-1)
     end
   end
 end
