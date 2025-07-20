@@ -1,5 +1,7 @@
+
 require 'rails_helper'
 require 'test_prof/recipes/rspec/let_it_be'
+require_relative '../support/shared_examples/atribui_shared_examples'
 
 RSpec.describe TurmasController, type: :controller do
   let_it_be(:docente) { create(:user, ocupacao: 'docente') }
@@ -8,19 +10,11 @@ RSpec.describe TurmasController, type: :controller do
 
   before { sign_in docente }
 
-  shared_examples 'atribui turma' do |action|
-    it "atribui a turma para #{action}" do
-      expect(assigns(:turma)).to eq(turma)
-      expect(response).to render_template(action)
-    end
-  end
+
 
   describe 'GET #index' do
     before { get :index }
-    it 'lista turmas do docente' do
-      expect(assigns(:turmas)).to include(turma)
-      expect(response).to render_template(:index)
-    end
+    include_examples 'atribui coleção', :turmas, :index
   end
 
   describe 'GET #show' do
@@ -30,22 +24,18 @@ RSpec.describe TurmasController, type: :controller do
     end
     it 'atribui a turma e alunos vinculados' do
       expect(assigns(:alunos_vinculados)).to include(aluno)
-      expect(response).to render_template(:show)
     end
-    include_examples 'atribui turma', :show
+    include_examples 'atribui recurso', :turma, :show
   end
 
   describe 'GET #new' do
     before { get :new }
-    it 'atribui uma nova turma' do
-      expect(assigns(:turma)).to be_a_new(Turma)
-      expect(response).to render_template(:new)
-    end
+    include_examples 'atribui recurso', :turma, :new
   end
 
   describe 'GET #edit' do
     before { get :edit, params: { id: turma.id } }
-    include_examples 'atribui turma', :edit
+    include_examples 'atribui recurso', :turma, :edit
   end
 
   describe 'POST #create' do

@@ -1,5 +1,7 @@
+
 require 'rails_helper'
 require 'test_prof/recipes/rspec/let_it_be'
+require_relative '../support/shared_examples/atribui_shared_examples'
 
 RSpec.describe TemplatesController, type: :controller do
   let_it_be(:docente) { create(:user, ocupacao: 'docente') }
@@ -7,32 +9,21 @@ RSpec.describe TemplatesController, type: :controller do
 
   before { sign_in docente }
 
-  shared_examples 'atribui template' do |action|
-    it "atribui o template para #{action}" do
-      expect(assigns(:template)).to eq(template)
-      expect(response).to render_template(action)
-    end
-  end
+
 
   describe 'GET #index' do
     before { get :index }
-    it 'atribui todos os templates ordenados' do
-      expect(assigns(:templates)).to include(template)
-      expect(response).to render_template(:index)
-    end
+    include_examples 'atribui coleção', :templates, :index
   end
 
   describe 'GET #show' do
     before { get :show, params: { id: template.id } }
-    include_examples 'atribui template', :show
+    include_examples 'atribui recurso', :template, :show
   end
 
   describe 'GET #new' do
     before { get :new }
-    it 'atribui um novo template' do
-      expect(assigns(:template)).to be_a_new(Template)
-      expect(response).to render_template(:new)
-    end
+    include_examples 'atribui recurso', :template, :new
   end
 
   describe 'POST #create' do
@@ -65,7 +56,7 @@ RSpec.describe TemplatesController, type: :controller do
 
   describe 'GET #edit' do
     before { get :edit, params: { id: template.id } }
-    include_examples 'atribui template', :edit
+    include_examples 'atribui recurso', :template, :edit
   end
 
   describe 'DELETE #destroy' do

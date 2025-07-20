@@ -1,5 +1,7 @@
+
 require 'rails_helper'
 require 'test_prof/recipes/rspec/let_it_be'
+require_relative '../support/shared_examples/atribui_shared_examples'
 
 RSpec.describe FormulariosController, type: :controller do
   include TestProf::FactoryBot::Syntax
@@ -11,20 +13,15 @@ RSpec.describe FormulariosController, type: :controller do
 
   before { sign_in docente }
 
-  shared_examples 'atribui turmas e templates' do
+
+
+  describe 'GET #new' do
+    before { get :new }
+    include_examples 'atribui recurso', :formulario, :new
     it 'atribui turmas e templates' do
       expect(assigns(:turmas)).to include(turma)
       expect(assigns(:templates)).to include(template)
     end
-  end
-
-  describe 'GET #new' do
-    before { get :new }
-    it 'atribui um novo Formulario' do
-      expect(assigns(:formulario)).to be_a_new(Formulario)
-      expect(response).to render_template(:new)
-    end
-    include_examples 'atribui turmas e templates'
   end
 
   describe 'POST #create' do

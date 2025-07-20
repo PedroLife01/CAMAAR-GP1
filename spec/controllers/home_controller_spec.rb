@@ -1,5 +1,7 @@
+
 require 'rails_helper'
 require 'test_prof/recipes/rspec/let_it_be'
+require_relative '../support/shared_examples/atribui_shared_examples'
 
 RSpec.describe HomeController, type: :controller do
   describe 'GET #index' do
