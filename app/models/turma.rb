@@ -9,6 +9,8 @@ class Turma < ApplicationRecord
   # Formularios associados
   has_many :formularios, foreign_key: :id_turma, dependent: :destroy
 
+  validates :name, presence: true
+
   def periodo
     class_data.to_s[/semester\s+([\w.]+)/, 1] || "Não informado"
   end

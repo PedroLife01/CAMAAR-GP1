@@ -77,3 +77,12 @@ end
 gem "cssbundling-rails"
 
 gem "tailwindcss-ruby", "~> 4.1"
+
+gem "simplecov", "~> 0.22.0", group: :test
+
+gem "faker", "~> 3.5", group: :test
+
+gem "rubycritic", "~> 4.9"
+
+gem "rails-controller-testing", "~> 1.0", group: :test
+gem "test-prof", group: :test

@@ -1,3 +1,4 @@
+
 class Formulario < ApplicationRecord
   belongs_to :template, foreign_key: :id_template
   belongs_to :turma, foreign_key: :id_turma
@@ -5,4 +6,6 @@ class Formulario < ApplicationRecord
 
   has_many :controle_de_envios, dependent: :destroy
   has_many :respostas, dependent: :destroy
+
+  validates :titulo, :descricao, :data_abertura, :data_fechamento, :id_turma, :id_template, presence: true
 end
