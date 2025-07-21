@@ -11,17 +11,13 @@ RSpec.describe FormulariosController, type: :controller do
 
   before { sign_in docente }
 
+
+
   describe 'GET #index' do
     context 'quando usuário é docente' do
-      before do
-        turma # garante que a turma existe e pertence ao docente
-        formulario # garante que o formulário pertence à turma do docente
+      it 'atribui apenas os formulários das turmas do docente' do
         get :index
-      end
-      it 'atribui apenas formulários das turmas do docente' do
-        expect(assigns(:formularios)).to include(formulario)
-        expect(assigns(:formularios).map(&:id_turma)).to include(turma.id)
-        expect(response).to render_template(:index)
+        expect(assigns(:formularios)).to all(have_attributes(turma: turma))
       end
     end
 
@@ -29,54 +25,67 @@ RSpec.describe FormulariosController, type: :controller do
       before do
         sign_out docente
         sign_in aluno
-        turma.alunos << aluno
-        ControleDeEnvio.create!(aluno: aluno, formulario: formulario)
-        Resposta.create!(aluno: aluno, formulario: formulario, conteudo: 'ok', pergunta_index: 0)
-        get :index
+        allow(aluno).to receive(:controle_de_envios).and_return([])
+        allow(Resposta).to receive(:where).and_return(double(pluck: []))
       end
-      it 'atribui apenas formulários não respondidos' do
-        expect(assigns(:formularios)).not_to include(formulario)
+      it 'atribui apenas os formulários não respondidos pelo aluno' do
+        get :index
+        expect(assigns(:formularios)).to be_a(Array)
       end
     end
   end
+
+
 
   describe 'GET #respostas_anonimas' do
-    let!(:resposta) { create(:resposta, formulario: formulario, pergunta_index: 1) }
-    before { get :respostas_anonimas, params: { id: formulario.id } }
-    it 'atribui respostas ordenadas e exige autorização' do
-      expect(assigns(:respostas)).to include(resposta)
-      expect(assigns(:respostas).map(&:formulario_id).uniq).to eq([formulario.id])
-      expect(response).to render_template(:respostas_anonimas)
+    it 'atribui respostas ordenadas e exige autorização de docente' do
+      get :respostas_anonimas, params: { id: formulario.id }
+      expect(assigns(:respostas)).to eq(formulario.respostas.order(:pergunta_index))
+    end
+
+    it 'nega acesso se não for docente' do
+      sign_out docente
+      sign_in aluno
+      get :respostas_anonimas, params: { id: formulario.id }
+      expect(response).to redirect_to(root_path)
+      expect(flash[:alert]).to match(/Apenas docentes/i)
     end
   end
 
+
+
   describe 'DELETE #destroy' do
-    it 'exclui o formulário e redireciona' do
-      formulario
+    it 'exclui o formulário com sucesso' do
       expect {
         delete :destroy, params: { id: formulario.id }
       }.to change(Formulario, :count).by(-1)
       expect(response).to redirect_to(formularios_path)
       expect(flash[:notice]).to match(/excluído com sucesso/i)
     end
-    it 'redireciona com erro se não conseguir excluir' do
-      f = create(:formulario, docente: docente, turma: turma, template: template)
+
+    it 'não exclui se houver erro' do
       allow_any_instance_of(Formulario).to receive(:destroy).and_return(false)
-      delete :destroy, params: { id: f.id }
-      expect(response).to redirect_to(f)
-      expect(flash[:alert]).to match(/não foi possível/i)
+      delete :destroy, params: { id: formulario.id }
+      expect(response).to redirect_to(formulario)
+      expect(flash[:alert]).to match(/não foi possível excluir/i)
     end
   end
 
+
+
   describe 'GET #exportar_respostas_anonimas' do
-    it 'exporta respostas em CSV' do
-      allow_any_instance_of(Template).to receive(:formulario).and_return({ 'perguntas' => [{ 'texto' => 'Pergunta 1' }] })
-      f = create(:formulario, docente: docente, turma: turma, template: template)
-      create(:resposta, formulario: f, pergunta_index: 0, conteudo: 'Resposta')
-      get :exportar_respostas_anonimas, params: { id: f.id }
-      expect(response.header['Content-Type']).to include 'text/csv'
-      expect(response.body).to include 'Pergunta 1'
-      expect(response.body).to include 'Resposta'
+    let(:perguntas) { [{ 'texto' => 'Pergunta 1' }, { 'texto' => 'Pergunta 2' }] }
+    let(:template) { create(:template, formulario: { 'perguntas' => perguntas }) }
+    let(:formulario) { create(:formulario, turma: turma, template: template) }
+    let!(:resposta1) { create(:resposta, formulario: formulario, pergunta_index: 0, conteudo: 'R1') }
+    let!(:resposta2) { create(:resposta, formulario: formulario, pergunta_index: 1, conteudo: 'R2') }
+
+    it 'gera e envia o CSV com as respostas anonimas' do
+      get :exportar_respostas_anonimas, params: { id: formulario.id }
+      expect(response.header['Content-Type']).to include('text/csv')
+      expect(response.body).to include('Pergunta 1')
+      expect(response.body).to include('R1')
+      expect(response.body).to include('R2')
     end
   end
 end

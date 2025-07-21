@@ -10,6 +10,7 @@ RSpec.describe SigaaImportController, type: :controller do
 
   before { sign_in docente }
 
+
   describe 'GET #new' do
     before { get :new }
     it 'renderiza o template new' do
@@ -17,6 +18,8 @@ RSpec.describe SigaaImportController, type: :controller do
       expect(response).to be_successful
     end
   end
+
+
 
   describe 'POST #create' do
     let(:classes_data) { [{ 'code' => 'T1', 'name' => 'Turma 1', 'class' => '2025.1' }] }
@@ -74,9 +77,12 @@ RSpec.describe SigaaImportController, type: :controller do
       it 'redireciona com erro se houver exceção' do
         do_request
         expect(response).to redirect_to(sigaa_importar_path)
+        expect(flash[:alert]).to match(/erro json/i)
       end
     end
   end
+
+
 
   describe 'filtro de autorização' do
     it 'permite acesso a docente e admin' do

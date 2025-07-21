@@ -25,36 +25,61 @@ RSpec.describe RespostasController, type: :controller do
 
   subject(:do_request) { post :create, params: { formulario_id: formulario.id, respostas: params } }
 
+
   describe 'POST #create' do
-    context 'com respostas válidas' do
-      let(:params) { respostas_params }
-      it 'cria respostas e redireciona com sucesso' do
-        expect { do_request }.to change(Resposta, :count).by(2)
-        expect(response).to redirect_to(formulario_path(formulario))
-        expect(flash[:notice]).to match(/sucesso/i)
-      end
+    before do
+      Resposta.where(formulario: formulario, aluno: aluno).delete_all
     end
 
-    context 'quando já respondeu' do
+    context 'quando o aluno já respondeu o formulário' do
       let(:params) { respostas_params }
-      it 'não permite responder o mesmo formulário duas vezes' do
-        do_request # primeira resposta
-        do_request # tentativa duplicada
+      before do
+        Resposta.create!(formulario: formulario, aluno: aluno, pergunta_index: 0, conteudo: 'Já respondeu')
+      end
+      it 'redireciona com alerta de já respondido' do
+        do_request
         expect(response).to redirect_to(formulario_path(formulario))
         expect(flash[:alert]).to match(/já respondeu/i)
       end
     end
 
-    context 'com respostas incompletas' do
+    context 'quando há perguntas não respondidas' do
       let(:params) { respostas_params.merge('1' => { 'pergunta_index' => 1, 'conteudo' => '' }) }
-      before do
-        # Remove qualquer resposta prévia do aluno para o formulário
-        Resposta.where(formulario: formulario, aluno: aluno).delete_all
-      end
-      it 'não permite enviar se faltar resposta' do
+      it 'redireciona com alerta de perguntas faltando' do
         do_request
         expect(response).to redirect_to(formulario_path(formulario))
-        expect(flash[:alert]).to match(/responda todas as perguntas antes de enviar o formulário/i)
+        expect(flash[:alert]).to match(/responda todas as perguntas/i)
+      end
+    end
+
+    context 'quando todas as respostas são válidas' do
+      let(:params) { respostas_params }
+      it 'cria respostas e redireciona com sucesso' do
+        expect {
+          post :create, params: { formulario_id: formulario.id, respostas: params }
+        }.to change(Resposta, :count).by(2)
+        expect(response).to redirect_to(formulario_path(formulario))
+        expect(flash[:notice]).to match(/sucesso/i)
+      end
+    end
+
+    context 'quando respostas_params está ausente' do
+      it 'gera erro de parâmetros e não cria respostas' do
+        expect {
+          post :create, params: { formulario_id: formulario.id }
+        }.to raise_error(ActionController::ParameterMissing)
+      end
+    end
+
+    context 'quando há perguntas extras não esperadas' do
+      let(:params) do
+        respostas_params.merge('2' => { 'pergunta_index' => 2, 'conteudo' => 'Extra' })
+      end
+      it 'cria respostas para todas as perguntas recebidas, inclusive extras' do
+        expect {
+          post :create, params: { formulario_id: formulario.id, respostas: params }
+        }.to change(Resposta, :count).by(3)
+        expect(Resposta.where(conteudo: 'Extra')).not_to be_empty
       end
     end
   end

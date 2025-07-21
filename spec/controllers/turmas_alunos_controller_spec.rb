@@ -1,7 +1,9 @@
 
+
 require 'rails_helper'
 require 'test_prof/recipes/rspec/let_it_be'
 require_relative '../support/shared_examples/atribui_shared_examples'
+
 
 RSpec.describe TurmasAlunosController, type: :controller do
   let_it_be(:docente) { create(:user, ocupacao: 'docente') }
@@ -46,4 +48,8 @@ RSpec.describe TurmasAlunosController, type: :controller do
       expect(response).to have_http_status(:redirect)
     end
   end
+
+  # Exemplo de uso dos shared_examples globais
+  # include_examples 'atribui recurso', :turma, :show
+  # include_examples 'atribui coleção', :turmas, :index
 end
