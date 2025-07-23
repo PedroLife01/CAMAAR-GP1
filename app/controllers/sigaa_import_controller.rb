@@ -1,9 +1,32 @@
+##
+# Controller responsável pela importação de dados do SIGAA (turmas, docentes e discentes).
+#
+# Permite que docentes (ou admins) importem turmas e seus participantes a partir de arquivos JSON.
 class SigaaImportController < ApplicationController
   before_action :authenticate_user!
   before_action :authorize_docente!
 
+  ##
+  # Renderiza a página com o formulário de importação de arquivos SIGAA.
+  #
+  # ==== Efeitos colaterais
+  # Nenhum. Apenas renderiza a view `sigaa_import/new.html.erb`.
   def new; end
 
+  ##
+  # Processa os arquivos enviados e realiza a importação de dados no banco.
+  #
+  # ==== Parâmetros
+  # * +params[:classes_file]+ - Arquivo JSON com os dados das turmas.
+  # * +params[:members_file]+ - Arquivo JSON com os dados dos participantes (docente + discentes).
+  #
+  # ==== Efeitos colaterais
+  # - Cria ou atualiza usuários (docentes e discentes).
+  # - Cria ou atualiza turmas.
+  # - Cria vínculos entre alunos e turmas.
+  #
+  # ==== Tratamento de erros
+  # - Caso arquivos estejam ausentes ou ocorra erro na transação, redireciona com alerta.
   def create
     classes_file = params[:classes_file]
     members_file = params[:members_file]
@@ -64,6 +87,11 @@ class SigaaImportController < ApplicationController
 
   private
 
+  ##
+  # Garante que apenas docentes ou admins possam acessar a funcionalidade de importação.
+  #
+  # ==== Efeitos colaterais
+  # Redireciona com alerta caso o usuário não seja autorizado.
   def authorize_docente!
     unless current_user.ocupacao == "docente" || current_user.ocupacao == "admin"
       redirect_to root_path, alert: "Acesso não autorizado."

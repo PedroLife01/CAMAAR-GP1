@@ -1,6 +1,24 @@
+##
+# Controller responsável por processar o envio de respostas a um formulário.
+#
+# Garante que o usuário esteja autenticado e que todas as perguntas sejam respondidas.
 class RespostasController < ApplicationController
   before_action :authenticate_user!
 
+  ##
+  # Cria as respostas de um formulário para o usuário atual.
+  #
+  # ==== Parâmetros
+  # * +params[:formulario_id]+ - ID do formulário que está sendo respondido.
+  # * +params[:respostas]+ - Hash contendo as respostas enviadas.
+  #
+  # ==== Regras e validações
+  # - Verifica se o usuário já respondeu o formulário.
+  # - Garante que todas as perguntas foram respondidas.
+  #
+  # ==== Efeitos colaterais
+  # - Cria registros na tabela `Resposta` no banco de dados.
+  # - Redireciona para a página do formulário com mensagem de sucesso ou erro.
   def create
     formulario = Formulario.find(params[:formulario_id])
 
@@ -10,7 +28,6 @@ class RespostasController < ApplicationController
     end
 
     respostas_params = params.require(:respostas).permit!.to_h
-
     perguntas = formulario.template.formulario["perguntas"]
     erros = []
 

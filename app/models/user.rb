@@ -1,8 +1,23 @@
+##
+# Modelo que representa um usuário do sistema.
+#
+# Um usuário pode ter ocupação de +docente+ ou +dicente+, e suas permissões/associações mudam de acordo com isso.
+# Utiliza o Devise para autenticação e gerenciamento de sessão.
+#
+# ==== Associações
+# * +turmas+ - Turmas onde o usuário é docente (professor responsável).
+# * +turmas_como_aluno+ - Turmas onde o usuário está matriculado como aluno.
+# * +templates+ - Templates criados pelo usuário (quando docente).
+# * +controle_de_envios+ - Registros de formulários enviados para o usuário (quando aluno).
+#
+# ==== Autenticação (Devise)
+# Inclui os módulos: +database_authenticatable+, +registerable+, +recoverable+, +rememberable+ e +validatable+.
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
   # Um usuário pode ser docente (dono de turma)
   has_many :turmas, foreign_key: :id_docente, dependent: :nullify
 
