@@ -64,14 +64,18 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+
+  # Gerar documentação do projeto com RDoc
+  gem "rdoc"
 end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem 'cucumber-rails', require: false
-  gem 'database_cleaner-active_record'
   gem 'capybara'
-  gem 'selenium-webdriver' # caso vá testar com navegador
+  gem "rspec-rails"
+  gem 'selenium-webdriver' # se quiser testes com navegador
+  gem 'database_cleaner-active_record'
   gem 'factory_bot_rails'
 end
 gem "cssbundling-rails"

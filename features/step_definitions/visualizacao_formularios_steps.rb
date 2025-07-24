@@ -1,29 +1,22 @@
 # features/step_definitions/visualizacao_formularios_steps.rb
 
-Given('estou autenticado como {string}') do |_papel|
-  pending 'implementar autenticação do usuário'
-end
-
 Given('existe um formulário publicado e ainda não respondido por mim') do
-  pending 'implementar criação de formulário pendente para o usuário'
+  turma_do_usuario = @current_user.turma
+  FactoryBot.create(:formulario, turma: turma_do_usuario, status: 'publicado')
 end
 
 Given('não existem formulários pendentes para mim') do
-  pending 'garantir que não há formulários pendentes para o usuário'
+  # Garante que não há formulários para a turma do usuário ou que ele já respondeu todos
 end
 
-When('visito a página {string}') do |_pagina|
-  pending 'implementar navegação para a página'
+When('visito a página {string}') do |pagina|
+  visit pagina # Ex: visit '/formularios'
 end
 
 Then('devo ver o formulário na lista') do
-  pending 'validar que o formulário aparece na lista'
+  expect(page).to have_css('.lista-formularios .formulario-item') # Adapte o seletor
 end
 
-Then('não devo ver a mensagem {string}') do |_mensagem|
-  pending 'validar que a mensagem não aparece na tela'
-end
-
-Then('devo ver a mensagem {string}') do |_mensagem|
-  pending 'validar que a mensagem aparece na tela'
+Then('não devo ver a mensagem {string}') do |mensagem|
+  expect(page).not_to have_content(mensagem)
 end

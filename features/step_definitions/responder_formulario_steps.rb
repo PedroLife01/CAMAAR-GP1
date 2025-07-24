@@ -1,33 +1,28 @@
 # features/step_definitions/responder_formulario_steps.rb
 
-Given('estou autenticado como {string}') do |_papel|
-  pending 'implementar autenticação do usuário'
-end
-
 Given('existe um formulário publicado para minha turma') do
-  pending 'implementar criação/publicação de formulário para a turma'
+  turma_do_usuario = @current_user.turma # Supondo que o usuário tenha uma turma
+  FactoryBot.create(:formulario, turma: turma_do_usuario, status: 'publicado')
 end
 
-When('seleciono {string} na questão {string}') do |_resposta, _questao|
-  pending 'implementar seleção de resposta'
+When('seleciono {string} na questão {string}') do |resposta, questao|
+  # Encontra a div ou fieldset da questão e seleciona a opção dentro dela
+  within_fieldset(questao) do
+    choose(resposta)
+  end
 end
 
-When('não preencho a questão {string}') do |_questao|
-  pending 'implementar ausência de resposta'
-end
-
-When('clico em {string}') do |_botao|
-  pending 'implementar clique em botão'
-end
-
-Then('devo ver a mensagem {string}') do |_mensagem|
-  pending 'validar mensagem na tela'
+When('não preencho a questão {string}') do |questao|
+  # Não faz nada, garantindo que o campo da questão fique em branco.
+  # O teste verificará a validação do backend/frontend.
 end
 
 Then('minha resposta deve ser registrada') do
-  pending 'garantir que a resposta foi salva'
+  # Exemplo: verifica se uma nova resposta foi criada para o usuário atual
+  expect(Resposta.where(user: @current_user)).to exist
 end
 
 Then('não devo conseguir enviar minha resposta') do
-  pending 'garantir que a resposta não foi salva'
+  # Exemplo: verifica que nenhuma resposta foi criada
+  expect(Resposta.where(user: @current_user)).not_to exist
 end

@@ -1,9 +1,4 @@
 # features/step_definitions/visualizar_templates_steps.rb
-
-Given('estou autenticado como {string}') do |_papel|
-  pending 'login admin'
-end
-
 Given('possuo {int} templates cadastrados') do |_quantidade|
   pending 'criar N templates'
 end

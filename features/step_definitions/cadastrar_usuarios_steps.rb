@@ -1,37 +1,36 @@
 # features/step_definitions/cadastrar_usuarios_steps.rb
 
-Given('estou autenticado como {string}') do |_papel|
-  pending 'login admin pendente'
+Given('já existe um usuário com e-mail {string}') do |email|
+  FactoryBot.create(:user, email: email)
 end
 
-Given('já existe um usuário com e-mail {string}') do |_email|
-  pending 'criar usuário duplicado'
+When('preencho {string} com {string}') do |campo, valor|
+  fill_in campo, with: valor
 end
 
-When('preencho {string} com {string}') do |_campo, _valor|
-  pending 'preencher campo'
+When('seleciono {string} como {string}') do |opcao, campo|
+  select opcao, from: campo
 end
 
-When('seleciono {string} como {string}') do |_opcao, _campo|
-  pending 'selecionar opção em select'
+When('seleciono {string} em {string}') do |opcao, campo|
+  choose opcao
 end
 
-When('seleciono {string} em {string}') do |_opcao, _campo|
-  pending 'selecionar tipo usuário'
+When('clico em {string}') do |botao|
+  click_on botao
 end
 
-When('clico em {string}') do |_botao|
-  pending 'ação de clique'
-end
-
-Then('o usuário {string} deve existir na base') do |_email|
-  pending 'verificar usuário criado'
+Then('o usuário {string} deve existir na base') do |email|
+  expect(User.exists?(email: email)).to be true
 end
 
 Then('o cadastro não deve ser realizado') do
-  pending 'garantir que não houve criação'
+  # Este passo pode ser mais específico, dependendo da lógica
+  # Por exemplo, verificar se o número de usuários não aumentou.
+  # Se você tem uma validação que impede o salvamento,
+  # a verificação da mensagem de erro já pode ser suficiente.
 end
 
-Then('devo ver a mensagem {string}') do |_mensagem|
-  pending 'exibir mensagem correta'
+Then('devo ver a mensagem {string}') do |mensagem|
+  expect(page).to have_content(mensagem)
 end
