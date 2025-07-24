@@ -2,7 +2,7 @@
 # Controller responsável por gerenciar templates de formulários.
 #
 # Apenas usuários com ocupação "docente" podem acessar este controller.
-# Templates em uso não podem ser editados ou excluídos.
+# Templates que já estão vinculados a algum formulário não podem ser editados ou excluídos.
 class TemplatesController < ApplicationController
   before_action :authenticate_user!
   before_action :check_docente!
@@ -10,22 +10,22 @@ class TemplatesController < ApplicationController
   before_action :check_if_in_use, only: [:edit, :update, :destroy]
 
   ##
-  # Lista todos os templates cadastrados, em ordem decrescente de criação.
+  # Lista todos os templates cadastrados no sistema.
   #
   # ==== Efeitos colaterais
-  # Carrega @templates para a view.
+  # - Carrega a variável de instância @templates com todos os templates ordenados por data de criação.
   def index
     @templates = Template.includes(:user).order(created_at: :desc)
   end
 
   ##
-  # Exibe um template específico.
+  # Exibe os detalhes de um template específico.
   #
   # ==== Parâmetros
-  # * +params[:id]+ - ID do template
+  # * +params[:id]+ - ID do template a ser exibido.
   #
   # ==== Efeitos colaterais
-  # Carrega @template para a view.
+  # - Carrega o template na variável @template.
   def show
     @template = Template.find(params[:id])
   end
@@ -34,19 +34,25 @@ class TemplatesController < ApplicationController
   # Inicializa um novo template para o formulário de criação.
   #
   # ==== Efeitos colaterais
-  # Cria uma instância vazia de Template.
+  # - Instancia @template como um novo objeto vazio.
   def new
     @template = Template.new
   end
 
   ##
-  # Cria um novo template associado ao usuário atual.
+  # Cria um novo template e o associa ao usuário atual.
   #
   # ==== Parâmetros
-  # * +params[:template]+ - hash com nome e estrutura do formulário (em JSON).
+  # * +params[:template]+ - Hash contendo:
+  #   - +:nome+ - Nome do template.
+  #   - +:formulario+ - Estrutura JSON com as perguntas e configurações do formulário.
+  #
+  # ==== Retorno
+  # - Redireciona para o índice com mensagem de sucesso.
+  # - Ou renderiza o formulário de criação com erros (status 422).
   #
   # ==== Efeitos colaterais
-  # Salva no banco ou renderiza erro de validação.
+  # - Cria um novo registro na tabela `templates`.
   def create
     params[:template][:formulario] = JSON.parse(params[:template][:formulario]) if params[:template][:formulario].is_a?(String)
 
@@ -62,10 +68,10 @@ class TemplatesController < ApplicationController
   # Carrega o template para edição.
   #
   # ==== Parâmetros
-  # * +params[:id]+ - ID do template
+  # * +params[:id]+ - ID do template a ser editado.
   #
   # ==== Efeitos colaterais
-  # Carrega @template.
+  # - Atribui o template à variável @template.
   def edit
     @template = Template.find(params[:id])
   end
@@ -74,10 +80,14 @@ class TemplatesController < ApplicationController
   # Atualiza um template existente.
   #
   # ==== Parâmetros
-  # * +params[:template]+ - hash atualizado com nome e estrutura em JSON.
+  # * +params[:template]+ - Hash com dados atualizados do template.
+  #
+  # ==== Retorno
+  # - Redireciona com mensagem de sucesso se for atualizado.
+  # - Renderiza a view de edição em caso de erro.
   #
   # ==== Efeitos colaterais
-  # Atualiza o registro ou renderiza erro.
+  # - Atualiza o template no banco de dados.
   def update
     params[:template][:formulario] = JSON.parse(params[:template][:formulario]) if params[:template][:formulario].is_a?(String)
 
@@ -89,13 +99,16 @@ class TemplatesController < ApplicationController
   end
 
   ##
-  # Exclui um template do banco de dados.
+  # Remove o template do banco de dados.
   #
   # ==== Parâmetros
-  # * +params[:id]+ - ID do template
+  # * +params[:id]+ - ID do template a ser removido.
+  #
+  # ==== Retorno
+  # Redireciona para o índice com mensagem de sucesso.
   #
   # ==== Efeitos colaterais
-  # Remove o template do banco.
+  # - Exclui o template do banco (se não estiver em uso).
   def destroy
     @template.destroy
     redirect_to templates_path, notice: "Template excluído com sucesso!"
@@ -104,28 +117,31 @@ class TemplatesController < ApplicationController
   private
 
   ##
-  # Verifica se o usuário atual é docente.
+  # Garante que o usuário atual seja um docente.
   #
   # ==== Efeitos colaterais
-  # Redireciona para root_path caso não seja docente.
+  # - Redireciona para `root_path` caso o usuário não tenha permissão.
   def check_docente!
     redirect_to root_path unless current_user.ocupacao == "docente"
   end
 
   ##
-  # Carrega o template com base no ID informado.
+  # Define o template atual com base no ID da URL.
   #
   # ==== Parâmetros
-  # * +params[:id]+ - ID do template
+  # * +params[:id]+ - ID do template.
+  #
+  # ==== Efeitos colaterais
+  # - Atribui à variável @template.
   def set_template
     @template = Template.find(params[:id])
   end
 
   ##
-  # Impede edição ou exclusão de templates que estão em uso.
+  # Impede que templates vinculados a formulários sejam modificados.
   #
   # ==== Efeitos colaterais
-  # Redireciona com alerta caso o template esteja vinculado a formulários.
+  # - Redireciona com alerta se o template já estiver sendo usado.
   def check_if_in_use
     if @template.formularios.exists?
       redirect_to templates_path, alert: "Este template está sendo utilizado em um formulário e não pode ser alterado ou excluído."
@@ -133,10 +149,10 @@ class TemplatesController < ApplicationController
   end
 
   ##
-  # Filtra e permite apenas os parâmetros válidos para template.
+  # Permite apenas os parâmetros autorizados para criação/edição de templates.
   #
   # ==== Retorno
-  # Hash com os campos `:nome` e `formulario` (estrutura do formulário).
+  # * Hash com os campos permitidos: `:nome` e `formulario` (JSON).
   def template_params
     params.require(:template).permit(:nome, formulario: {})
   end

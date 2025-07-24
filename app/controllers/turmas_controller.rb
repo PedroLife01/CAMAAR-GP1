@@ -1,18 +1,20 @@
 ##
 # Controller responsável por gerenciar as ações relacionadas às turmas.
 #
-# Possui métodos para CRUD completo, busca de alunos e visualização de formulários e respostas.
+# Permite realizar CRUD completo, visualizar alunos vinculados, formulários associados
+# e realizar busca por alunos para vinculação.
 class TurmasController < ApplicationController
   include Pagy::Backend
   before_action :set_turma, only: %i[ show edit update destroy ]
 
   ##
-  # Lista as turmas do usuário atual.
+  # Lista as turmas associadas ao usuário atual.
   #
-  # Se o usuário for docente, traz as turmas que ele leciona. Caso contrário, traz as turmas onde ele é aluno.
+  # - Se for docente: lista as turmas em que é responsável.
+  # - Se for discente: lista as turmas em que está matriculado.
   #
   # ==== Efeitos colaterais
-  # Carrega @turmas para uso na view.
+  # Carrega @turmas para uso nas views.
   def index
     if current_user.ocupacao == "docente"
       @turmas = Turma.includes(:docente).where(id_docente: current_user.id).order(:name)
@@ -22,14 +24,15 @@ class TurmasController < ApplicationController
   end
 
   ##
-  # Exibe os detalhes de uma turma, incluindo alunos, formulários e busca de alunos.
+  # Exibe os detalhes de uma turma específica.
   #
   # ==== Parâmetros
-  # * +params[:id]+ - ID da turma a ser exibida
-  # * +params[:q]+ - (opcional) termo de busca para alunos
+  # * +params[:id]+ - ID da turma a ser exibida.
+  # * +params[:q]+ - (opcional) termo para busca de alunos.
   #
   # ==== Efeitos colaterais
-  # Carrega dados da turma e resultados de busca para uso na view.
+  # Carrega variáveis: @turma, @alunos_vinculados, @formularios_com_respostas,
+  # e @alunos_busca (caso haja busca ativa).
   def show
     @turma = Turma.includes(:docente, :formularios, :alunos).find(params[:id])
     @pagy_vinculados, @alunos_vinculados = pagy(@turma.alunos.order(:nome), items: 10, page_param: :page_vinculados)
@@ -50,16 +53,19 @@ class TurmasController < ApplicationController
   end
 
   ##
-  # Inicializa uma nova instância de turma.
+  # Instancia um novo objeto `Turma`.
+  #
+  # ==== Efeitos colaterais
+  # Define @turma como uma nova instância.
   def new
     @turma = Turma.new
   end
 
   ##
-  # Edita os dados de uma turma existente.
+  # Instancia a turma a ser editada.
   #
   # ==== Efeitos colaterais
-  # Usa o método +set_turma+ para carregar a turma.
+  # Define @turma via +set_turma+.
   def edit
   end
 
@@ -67,10 +73,13 @@ class TurmasController < ApplicationController
   # Cria uma nova turma com os parâmetros fornecidos.
   #
   # ==== Parâmetros
-  # * +params[:turma]+ - hash com dados da turma
+  # * +params[:turma]+ - hash com os atributos da turma.
+  #
+  # ==== Retorno
+  # Redireciona ou renderiza conforme sucesso ou erro.
   #
   # ==== Efeitos colaterais
-  # Salva no banco de dados e redireciona ou renderiza conforme sucesso ou erro.
+  # Cria um novo registro de Turma no banco de dados.
   def create
     @turma = Turma.new(turma_params)
 
@@ -88,17 +97,17 @@ class TurmasController < ApplicationController
   end
 
   ##
-  # Atualiza uma turma existente.
+  # Atualiza os dados de uma turma existente.
   #
   # ==== Parâmetros
-  # * +params[:turma]+ - hash com dados atualizados da turma
+  # * +params[:turma]+ - hash com os novos dados da turma.
   #
   # ==== Efeitos colaterais
-  # Salva alterações no banco ou renderiza erros.
+  # Salva alterações no banco ou renderiza erro de validação.
   def update
     respond_to do |format|
       if @turma.update(turma_params)
-        format.html { redirect_to @turma, notice: "Turma was successfully updated." }
+        format.html { redirect_to @turma, notice: "Turma atualizada com sucesso." }
         format.json { render :show, status: :ok, location: @turma }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -108,31 +117,31 @@ class TurmasController < ApplicationController
   end
 
   ##
-  # Remove uma turma do banco de dados.
+  # Exclui uma turma do banco de dados.
   #
   # ==== Parâmetros
-  # * +params[:id]+ - ID da turma a ser deletada
+  # * +params[:id]+ - ID da turma a ser excluída.
   #
   # ==== Efeitos colaterais
-  # Exclui do banco e redireciona para a listagem.
+  # Remove a turma e redireciona para a listagem com status 303.
   def destroy
     @turma.destroy!
 
     respond_to do |format|
-      format.html { redirect_to turmas_path, status: :see_other, notice: "Turma was successfully destroyed." }
+      format.html { redirect_to turmas_path, status: :see_other, notice: "Turma excluída com sucesso." }
       format.json { head :no_content }
     end
   end
 
   ##
-  # Busca alunos pelo nome, matrícula ou e-mail que ainda não estejam vinculados à turma.
+  # Busca alunos ainda não vinculados à turma, pelo nome, matrícula ou e-mail.
   #
   # ==== Parâmetros
-  # * +params[:id]+ - ID da turma
-  # * +params[:query]+ - termo de busca
+  # * +params[:id]+ - ID da turma.
+  # * +params[:query]+ - termo para busca.
   #
   # ==== Efeitos colaterais
-  # Renderiza um partial com os resultados.
+  # Renderiza o partial `turmas/_resultados_busca.html.erb` com os resultados encontrados.
   def buscar_alunos
     @turma = Turma.find(params[:id])
     @resultados = User.where("nome ILIKE :q OR matricula ILIKE :q OR email ILIKE :q", q: "%#{params[:query]}%")
@@ -143,22 +152,22 @@ class TurmasController < ApplicationController
   private
 
     ##
-    # Carrega a turma com base no ID informado.
+    # Localiza a turma com base no ID informado.
     #
     # ==== Parâmetros
-    # * +params[:id]+ - ID da turma
+    # * +params[:id]+ - ID da turma.
     #
     # ==== Efeitos colaterais
-    # Define a variável de instância @turma.
+    # Define a variável @turma.
     def set_turma
       @turma = Turma.find(params[:id])
     end
 
     ##
-    # Filtra e estrutura os parâmetros permitidos para criação/edição de turma.
+    # Permite apenas os parâmetros válidos para criação ou edição de turmas.
     #
     # ==== Retorno
-    # Hash com os dados válidos.
+    # Hash contendo os atributos permitidos: +name+, +code+, +id_docente+, +class_data+.
     def turma_params
       {
         name: params[:turma][:name],
