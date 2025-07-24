@@ -7,6 +7,11 @@
 # ==== Associações
 # * +turma+ - Turma vinculada ao aluno.
 # * +aluno+ - Usuário (discente) vinculado à turma.
+#
+# ==== Observações
+# Esta tabela associativa é usada para:
+# - Consultar todos os alunos de uma turma via `turma.alunos`
+# - Consultar todas as turmas de um aluno via `aluno.turmas_como_aluno`
 class TurmasAluno < ApplicationRecord
   belongs_to :turma, foreign_key: :turma_id
   belongs_to :aluno, class_name: 'User', foreign_key: :aluno_id

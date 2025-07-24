@@ -1,10 +1,21 @@
 ##
 # Classe base para todos os models da aplicação.
 #
-# Herda de +ActiveRecord::Base+ e define comportamentos compartilhados por todos os models.
-# Essa classe é abstrata e não possui tabela associada no banco de dados.
+# Essa classe herda de +ActiveRecord::Base+ e serve como superclasse abstrata para
+# todos os outros models. Define comportamentos comuns e configurações padrão.
 #
-# Todos os models devem herdar de +ApplicationRecord+.
+# ==== Características
+# - Abstrata: não possui tabela associada no banco de dados.
+# - Convenção padrão em aplicações Rails modernas.
+#
+# ==== Uso
+# Todos os models da aplicação devem herdar de +ApplicationRecord+ ao invés de diretamente de +ActiveRecord::Base+.
+#
+# ==== Exemplo
+#   class User < ApplicationRecord
+#     # código do model
+#   end
+#
 class ApplicationRecord < ActiveRecord::Base
   primary_abstract_class
 end

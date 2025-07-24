@@ -1,17 +1,26 @@
 ##
 # Modelo que representa um usuário do sistema.
 #
-# Um usuário pode ter ocupação de +docente+ ou +dicente+, e suas permissões/associações mudam de acordo com isso.
+# Um usuário pode ter ocupação de +docente+ ou +dicente+, e suas permissões e associações variam conforme essa ocupação.
 # Utiliza o Devise para autenticação e gerenciamento de sessão.
 #
 # ==== Associações
-# * +turmas+ - Turmas onde o usuário é docente (professor responsável).
-# * +turmas_como_aluno+ - Turmas onde o usuário está matriculado como aluno.
-# * +templates+ - Templates criados pelo usuário (quando docente).
+# * +turmas+ - Turmas onde o usuário atua como docente (campo `id_docente` nas turmas).
+# * +turmas_como_aluno+ - Turmas nas quais o usuário está vinculado como aluno (relacionamento N:N via `turmas_alunos`).
+# * +templates+ - Templates de formulário criados pelo usuário (quando docente).
 # * +controle_de_envios+ - Registros de formulários enviados para o usuário (quando aluno).
 #
 # ==== Autenticação (Devise)
-# Inclui os módulos: +database_authenticatable+, +registerable+, +recoverable+, +rememberable+ e +validatable+.
+# Inclui os módulos:
+# - +:database_authenticatable+
+# - +:registerable+
+# - +:recoverable+
+# - +:rememberable+
+# - +:validatable+
+#
+# ==== Observações
+# * O campo +ocupacao+ define o papel do usuário: "docente" ou "dicente".
+# * A senha padrão pode ser configurada no momento da importação (ver `SigaaImportController`).
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
