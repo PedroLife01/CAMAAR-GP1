@@ -1,9 +1,24 @@
+##
+# Controller responsável por gerenciar formulários criados por docentes.
+#
+# Permite criação, visualização, exclusão, envio e exportação de respostas dos formulários.
+# Alunos (dicentes) visualizam apenas os formulários ainda não respondidos.
 class FormulariosController < ApplicationController
   require "csv"
+
   before_action :authenticate_user!
   before_action :set_formulario, only: [:show, :destroy, :enviar]
   before_action :authorize_docente!, only: [:new, :create]
 
+  ##
+  # Lista os formulários visíveis ao usuário logado.
+  #
+  # ==== Regras
+  # - Para docentes: exibe formulários das turmas que lecionam.
+  # - Para discentes: exibe apenas os formulários que ainda não responderam.
+  #
+  # ==== Efeitos colaterais
+  # Carrega a variável de instância +@formularios+.
   def index
     if current_user.ocupacao == "docente"
       turmas_ids = Turma.where(id_docente: current_user.id).pluck(:id)
@@ -21,6 +36,15 @@ class FormulariosController < ApplicationController
     end
   end
 
+  ##
+  # Exibe respostas anônimas para um formulário, organizadas por pergunta.
+  #
+  # ==== Parâmetros
+  # * +params[:id]+ - ID do formulário cujas respostas serão exibidas.
+  #
+  # ==== Efeitos colaterais
+  # - Requer permissão de docente.
+  # - Carrega +@respostas+ e +@formulario+ para a view.
   def respostas_anonimas
     @formulario = Formulario.find(params[:id])
     authorize_docente!
@@ -28,6 +52,15 @@ class FormulariosController < ApplicationController
     @respostas = @formulario.respostas.order(:pergunta_index)
   end
 
+  ##
+  # Exclui um formulário da base de dados.
+  #
+  # ==== Parâmetros
+  # * +params[:id]+ - ID do formulário a ser removido.
+  #
+  # ==== Efeitos colaterais
+  # - Remove o registro permanentemente do banco.
+  # - Redireciona com flash de sucesso ou erro.
   def destroy
     if @formulario.destroy
       redirect_to formularios_path, notice: "Formulário excluído com sucesso! 🗑️"
@@ -36,6 +69,14 @@ class FormulariosController < ApplicationController
     end
   end
 
+  ##
+  # Exporta as respostas anônimas do formulário em um arquivo CSV.
+  #
+  # ==== Parâmetros
+  # * +params[:id]+ - ID do formulário a ser exportado.
+  #
+  # ==== Retorno
+  # * Envia um arquivo CSV como resposta HTTP.
   def exportar_respostas_anonimas
     @formulario = Formulario.find(params[:id])
     perguntas = @formulario.template.formulario["perguntas"]
@@ -57,13 +98,23 @@ class FormulariosController < ApplicationController
     send_data csv_data, filename: "respostas_formulario_#{@formulario.id}.csv"
   end
 
-
+  ##
+  # Formulário de criação de novo formulário.
+  #
+  # ==== Efeitos colaterais
+  # Carrega variáveis +@turmas+ e +@templates+ para a view.
   def new
     @formulario = Formulario.new
     @turmas = Turma.where(id_docente: current_user.id)
     @templates = Template.all
   end
 
+  ##
+  # Cria um novo formulário a partir dos dados submetidos pelo docente.
+  #
+  # ==== Efeitos colaterais
+  # - Salva o formulário no banco de dados.
+  # - Redireciona para a página do formulário ou renderiza novamente com erro.
   def create
     @formulario = Formulario.new(formulario_params)
     @formulario.docente = current_user
@@ -78,9 +129,20 @@ class FormulariosController < ApplicationController
     end
   end
 
+  ##
+  # Exibe os detalhes de um formulário.
+  #
+  # ==== Parâmetros
+  # * +params[:id]+ - ID do formulário a ser visualizado.
   def show
   end
 
+  ##
+  # Envia o formulário para todos os alunos da turma associada.
+  #
+  # ==== Efeitos colaterais
+  # - Cria registros na tabela +ControleDeEnvio+ para cada aluno da turma.
+  # - Redireciona com aviso de sucesso.
   def enviar
     turma = @formulario.turma
     alunos = turma.alunos.where(ocupacao: "dicente")
@@ -96,14 +158,36 @@ class FormulariosController < ApplicationController
 
   private
 
+  ##
+  # Carrega o formulário com base no ID passado via params.
+  #
+  # ==== Parâmetros
+  # * +params[:id]+ - ID do formulário.
   def set_formulario
     @formulario = Formulario.find(params[:id])
   end
 
+  ##
+  # Define os parâmetros permitidos para criação e edição de formulários.
+  #
+  # ==== Retorno
+  # Hash de parâmetros seguros.
   def formulario_params
-    params.require(:formulario).permit(:titulo, :descricao, :data_abertura, :data_fechamento, :id_turma, :id_template)
+    params.require(:formulario).permit(
+      :titulo,
+      :descricao,
+      :data_abertura,
+      :data_fechamento,
+      :id_turma,
+      :id_template
+    )
   end
 
+  ##
+  # Garante que o usuário atual seja um docente antes de executar certas ações.
+  #
+  # ==== Efeitos colaterais
+  # Redireciona para +root_path+ com uma mensagem de alerta caso a ocupação não seja "docente".
   def authorize_docente!
     unless current_user&.ocupacao == "docente"
       redirect_to root_path, alert: "Apenas docentes podem criar formulários."
