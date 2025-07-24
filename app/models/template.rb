@@ -1,36 +1,28 @@
 ##
-# Modelo que representa a resposta de um aluno a uma pergunta de um formulário.
+# Modelo que representa um template de formulário.
 #
-# Cada instância representa a resposta de um aluno a uma pergunta específica (indexada)
-# dentro de um formulário. Um formulário pode conter várias perguntas, e cada uma delas
-# será respondida individualmente por registros separados.
+# Cada instância desta classe define a estrutura de um formulário, incluindo quais campos e
+# perguntas ele deve conter. A partir de um template, vários formulários (instâncias) podem ser
+# criados e associados a diferentes usuários.
 #
 # ==== Atributos esperados
-# * +formulario_id+ [Integer] - ID do formulário ao qual a resposta pertence.
-# * +aluno_id+ [Integer] - ID do aluno que respondeu.
-# * +pergunta_index+ [Integer] - Índice da pergunta no array de perguntas do template.
-# * +conteudo+ [Text] - Conteúdo da resposta fornecida pelo aluno.
+# * +id_user+ [Integer] - ID do usuário proprietário ou criador do template.
 #
 # ==== Associações
-# * +formulario+ - Formulário ao qual a resposta pertence.
-# * +aluno+ - Usuário que respondeu a pergunta (ocupação: "dicente").
+# * +user+ - Usuário que criou ou é dono do template.
+# * +formularios+ - Coleção de formulários gerados a partir deste template.
 #
-# ==== Validações
-# * Garante que um mesmo aluno não possa responder a mesma pergunta de um mesmo formulário mais de uma vez.
-#   Essa restrição é aplicada pela combinação de `aluno_id`, `formulario_id` e `pergunta_index`.
+# ==== Callbacks e dependências
+# * A associação com +formularios+ possui a opção +dependent: :destroy+, o que significa que
+#   ao excluir um template, todos os formulários relacionados a ele serão removidos do banco.
 #
 # ==== Exemplo de uso
-#   Resposta.create!(
-#     formulario_id: 1,
-#     aluno_id: 42,
-#     pergunta_index: 0,
-#     conteudo: "Acredito que a disciplina poderia ter mais atividades práticas."
-#   )
+#   template = Template.create!(id_user: 1)
+#   template.formularios.create!(nome: "Formulário de Avaliação")
 #
-class Resposta < ApplicationRecord
-  belongs_to :formulario
-  belongs_to :aluno, class_name: "User", foreign_key: "aluno_id"
+class Template < ApplicationRecord
+  belongs_to :user, foreign_key: :id_user
+  has_many :formularios, foreign_key: :id_template, dependent: :destroy
 
-  validates :aluno_id, uniqueness: { scope: [:formulario_id, :pergunta_index],
-                                     message: "já respondeu essa pergunta do formulário" }
+  validates :nome, presence: true
 end
