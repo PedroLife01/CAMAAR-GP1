@@ -193,5 +193,3 @@ Utilizamos o modelo **GitHub Flow**:
 * **Omarques Santos**: Configuração Rspec, RubyCritic e otimização ABC Score.
 
 ---
-
-````
