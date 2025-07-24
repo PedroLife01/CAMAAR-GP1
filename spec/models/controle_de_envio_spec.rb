@@ -1,9 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe ControleDeEnvio, type: :model do
-  describe 'associations' do
-    # Adapte conforme os relacionamentos reais do model
-    it { should belong_to(:user).optional } if ControleDeEnvio.reflect_on_association(:user)
-    it { should belong_to(:formulario) } if ControleDeEnvio.reflect_on_association(:formulario)
+  describe 'associações' do
+    it { should belong_to(:aluno).class_name('User').with_foreign_key(:aluno_id) }
+    it { should belong_to(:formulario) }
   end
 end

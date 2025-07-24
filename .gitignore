@@ -37,6 +37,10 @@
 /public/public
 .aider*
 
+# ABC Score Analysis
+/abc_method_calculator.rb
+/ABC_Methods_Report.md
+
 # Ignore RDoc generated documentation
 /doc/*
 !/doc/.keep

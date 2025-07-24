@@ -20,6 +20,8 @@ class Turma < ApplicationRecord
   # Formularios associados
   has_many :formularios, foreign_key: :id_turma, dependent: :destroy
 
+  validates :name, presence: true
+
   ##
   # Extrai o semestre da turma a partir do campo +class_data+.
   #
